@@ -1,0 +1,261 @@
+// Advanced animations (GSAP) respecting prefers-reduced-motion
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+// Utilities (must be defined before first use)
+const qs = (s, r = document) => r.querySelector(s);
+const qsa = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+// Force page to start at top on refresh (respect deep links)
+try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch {}
+if (!location.hash) {
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    window.scrollTo(0, 0);
+  } else {
+    window.addEventListener('DOMContentLoaded', () => window.scrollTo(0, 0), { once: true });
+  }
+}
+window.addEventListener('beforeunload', () => { try { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); } catch {} });
+
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!reduce) {
+  // Scroll progress bar (lime) — lightweight and not overlaying cards
+  const progressEl = qs('#progress');
+  if (progressEl) {
+    ScrollTrigger.create({
+      start: 0,
+      end: 'max',
+      onUpdate: (self) => {
+        progressEl.style.width = `${self.progress * 100}%`;
+      },
+    });
+  }
+
+  // Accent bars grow in
+  qsa('.card .accent, .pricing-card .accent').forEach((el) => {
+    gsap.from(el, {
+      width: 0,
+      duration: 0.6,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el.parentElement, start: 'top 80%' },
+    });
+  });
+
+  // Parallax on hero title
+  const heroTitle = qs('#hero .display');
+  if (heroTitle) {
+    gsap.fromTo(heroTitle, { y: 0 }, {
+      y: -20,
+      scrollTrigger: {
+        trigger: '#hero',
+        scrub: 0.5,
+      }
+    });
+  }
+
+  // Magnetic buttons
+  qsa('.btn-primary, .btn-outline, .btn-invert').forEach((btn) => {
+    const strength = 20;
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const relX = e.clientX - rect.left - rect.width / 2;
+      const relY = e.clientY - rect.top - rect.height / 2;
+      gsap.to(btn, { x: (relX / rect.width) * strength, y: (relY / rect.height) * strength, duration: 0.2 });
+    });
+    btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.3 }));
+  });
+}
+// (moved utilities to top)
+
+// Ensure page starts at top on refresh (respect deep links)
+try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch {}
+const scrollToTopOnLoad = () => { if (!location.hash) window.scrollTo(0, 0); };
+window.addEventListener('load', scrollToTopOnLoad);
+window.addEventListener('pageshow', scrollToTopOnLoad);
+
+// Year in footer
+qs('#year').textContent = new Date().getFullYear();
+
+// Intersection Observer for reveal animations
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefersReduced) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14 });
+  qsa('.reveal, .reveal-fade').forEach((el) => observer.observe(el));
+} else {
+  qsa('.reveal, .reveal-fade').forEach((el) => el.classList.add('in-view'));
+}
+
+// Mobile menu with focus trap
+const hamburger = qs('#hamburger');
+const mobileMenu = qs('#mobile-menu');
+let lastFocused = null;
+let scrollLock = false;
+const menuCloseBtn = qs('#menuClose');
+
+function trapFocus(container, event) {
+  const focusable = qsa('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])', container)
+    .filter((el) => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    last.focus();
+    event.preventDefault();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    first.focus();
+    event.preventDefault();
+  }
+}
+
+function openMenu() {
+  lastFocused = document.activeElement;
+  mobileMenu.hidden = false;
+  hamburger.setAttribute('aria-expanded', 'true');
+  const firstLink = qs('a, button', mobileMenu);
+  firstLink && firstLink.focus();
+  document.addEventListener('keydown', onKeydown);
+  document.body.style.overflow = 'hidden';
+  scrollLock = true;
+}
+
+function closeMenu() {
+  mobileMenu.hidden = true;
+  hamburger.setAttribute('aria-expanded', 'false');
+  lastFocused && lastFocused.focus();
+  document.removeEventListener('keydown', onKeydown);
+  if (scrollLock) {
+    document.body.style.overflow = '';
+    scrollLock = false;
+  }
+}
+
+function onKeydown(e) {
+  if (e.key === 'Escape') return closeMenu();
+  if (e.key === 'Tab') trapFocus(mobileMenu, e);
+}
+
+hamburger?.addEventListener('click', () => {
+  const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+  expanded ? closeMenu() : openMenu();
+});
+
+qsa('#mobile-menu a').forEach((a) => a.addEventListener('click', closeMenu));
+menuCloseBtn?.addEventListener('click', closeMenu);
+
+// Click outside to close (overlay click)
+mobileMenu?.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) closeMenu();
+});
+
+// Bilingual content loading
+let lang = 'is';
+const storageKey = 'vefstaedi.lang';
+try { lang = localStorage.getItem(storageKey) || 'is'; } catch {}
+document.documentElement.lang = lang;
+
+async function loadContent(nextLang) {
+  const file = nextLang === 'en' ? '/data/content.en.json' : '/data/content.is.json';
+  const res = await fetch(file, { cache: 'no-cache' });
+  const json = await res.json();
+
+  // Hero
+  const hero = json.hero;
+  const heroTitle = qs('[data-i18n="hero.title"]');
+  const heroSubtitle = qs('[data-i18n="hero.subtitle"]');
+  const heroPrimary = qsa('[data-i18n="hero.primaryAction"]');
+  const heroSecondary = qsa('[data-i18n="hero.secondaryAction"]');
+  if (heroTitle) heroTitle.textContent = hero.title;
+  if (heroSubtitle) heroSubtitle.textContent = hero.subtitle;
+  heroPrimary.forEach((e) => (e.textContent = hero.primaryAction));
+  heroSecondary.forEach((e) => (e.textContent = hero.secondaryAction));
+
+  // Nav
+  const nav = json.nav;
+  qsa('[data-i18n="nav.services"]').forEach((e) => (e.textContent = nav.services));
+  qsa('[data-i18n="nav.pricing"]').forEach((e) => (e.textContent = nav.pricing));
+  qsa('[data-i18n="nav.work"]').forEach((e) => (e.textContent = nav.work));
+  qsa('[data-i18n="nav.contact"]').forEach((e) => (e.textContent = nav.contact));
+
+  // CTA banner
+  qsa('[data-i18n="cta.button"]').forEach((e) => (e.textContent = json.cta.button));
+
+  // Contact
+  qsa('[data-i18n="contact.title"]').forEach((e) => (e.textContent = json.contact.title));
+  qsa('[data-i18n="contact.submit"]').forEach((e) => (e.textContent = json.contact.submit));
+
+  // About
+  qsa('[data-i18n="about.kicker"]').forEach((e) => (e.textContent = json.about.kicker));
+  qsa('[data-i18n="about.title"]').forEach((e) => (e.textContent = json.about.title));
+  qsa('[data-i18n="about.p1"]').forEach((e) => (e.textContent = json.about.p1));
+  qsa('[data-i18n="about.p2"]').forEach((e) => (e.textContent = json.about.p2));
+  qsa('[data-i18n="about.p3"]').forEach((e) => (e.textContent = json.about.p3));
+  qsa('[data-i18n="about.stat1"]').forEach((e) => (e.textContent = json.about.stat1));
+  qsa('[data-i18n="about.stat2"]').forEach((e) => (e.textContent = json.about.stat2));
+  qsa('[data-i18n="about.stat3"]').forEach((e) => (e.textContent = json.about.stat3));
+
+  // FAQ render
+  const faqRoot = qs('#faq-list');
+  if (faqRoot && Array.isArray(json.faq)) {
+    faqRoot.innerHTML = '';
+    json.faq.forEach((item, idx) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'accordion-item';
+
+      const btn = document.createElement('button');
+      btn.className = 'accordion-button';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-controls', `faq-a-${idx}`);
+      btn.id = `faq-q-${idx}`;
+
+      const q = document.createElement('span');
+      q.className = 'accordion-q';
+      q.textContent = item.q;
+
+      const icon = document.createElement('span');
+      icon.className = 'accordion-icon';
+      icon.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14M5 12h14" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg>';
+
+      btn.append(q, icon);
+
+      const a = document.createElement('div');
+      a.className = 'accordion-a hidden';
+      a.id = `faq-a-${idx}`;
+      a.setAttribute('role', 'region');
+      a.setAttribute('aria-labelledby', btn.id);
+      a.textContent = item.a;
+
+      btn.addEventListener('click', () => {
+        const wasExpanded = btn.getAttribute('aria-expanded') === 'true';
+        const nowExpanded = !wasExpanded;
+        btn.setAttribute('aria-expanded', String(nowExpanded));
+        a.classList.toggle('hidden', !nowExpanded);
+        icon.innerHTML = nowExpanded
+          ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg>'
+          : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14M5 12h14" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg>';
+      });
+
+      wrapper.append(btn, a);
+      faqRoot.appendChild(wrapper);
+    });
+  }
+
+  document.documentElement.lang = nextLang;
+}
+
+qs('#langToggle')?.addEventListener('click', async () => {
+  lang = lang === 'is' ? 'en' : 'is';
+  try { localStorage.setItem(storageKey, lang); } catch {}
+  await loadContent(lang);
+});
+
+// Initial content load
+loadContent(lang);
+
+

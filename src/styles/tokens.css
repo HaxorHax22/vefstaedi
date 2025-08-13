@@ -1,0 +1,50 @@
+:root {
+  /* Colors */
+  --color-brand-lime: #CCFF33;
+  --color-brand-lime-600: #B5F220;
+  --color-brand-lime-700: #9AD60F;
+  --color-brand-lime-800: #7AB505;
+  --color-brand-ink: #0B0B0A;
+
+  --color-base-text: #141414;
+  --color-base-muted: #606060;
+  --color-base-disabled: #A8A8A8;
+  --color-base-white: #FFFFFF;
+  --color-base-cream: #F6F3EA;
+  --color-base-cream-2: #EFE9DC;
+  --color-base-border: #E6E0D3;
+  --color-base-card: #FFFFFF;
+  --color-base-overlay: rgba(0,0,0,0.04);
+
+  --shadow-card: 0 8px 24px rgba(0,0,0,0.08);
+  --shadow-floating: 0 12px 32px rgba(0,0,0,0.12);
+  --shadow-soft: 0 2px 8px rgba(0,0,0,0.06);
+
+  /* Typography */
+  --font-heading: "Satoshi", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --lh-tight: 1.05;
+  --lh-snug: 1.15;
+  --lh-normal: 1.4;
+  --lh-relaxed: 1.6;
+
+  --ls-tight: -0.02em;
+  --ls-normal: 0;
+  --ls-wide: 0.02em;
+}
+
+/* Map variables to Tailwind utility-friendly classes (optional helpers) */
+.text-brand-ink { color: var(--color-brand-ink); }
+.bg-brand-lime { background-color: var(--color-brand-lime); }
+.bg-base-cream { background-color: var(--color-base-cream); }
+.bg-base-cream-2 { background-color: var(--color-base-cream-2); }
+.text-base-text { color: var(--color-base-text); }
+.text-base-muted { color: var(--color-base-muted); }
+.border-base-border { border-color: var(--color-base-border); }
+.bg-base-card { background-color: var(--color-base-card); }
+.bg-base-overlay { background-color: var(--color-base-overlay); }
+.shadow-card { box-shadow: var(--shadow-card); }
+.shadow-soft { box-shadow: var(--shadow-soft); }
+
+
