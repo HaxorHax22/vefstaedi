@@ -184,8 +184,16 @@ document.documentElement.lang = lang;
 
 async function loadContent(nextLang) {
   // In production the app is served from dist; ensure JSON is accessible via public/
-  const file = nextLang === 'en' ? '/data/content.en.json' : '/data/content.is.json';
-  const res = await fetch(file, { cache: 'no-cache' });
+  // Try /data (public) first; fall back to /src/data during dev
+  let file = nextLang === 'en' ? '/data/content.en.json' : '/data/content.is.json';
+  let res;
+  try {
+    res = await fetch(file, { cache: 'no-cache' });
+    if (!res.ok) throw new Error('not ok');
+  } catch {
+    file = nextLang === 'en' ? '/src/data/content.en.json' : '/src/data/content.is.json';
+    res = await fetch(file, { cache: 'no-cache' });
+  }
   const json = await res.json();
 
   // Hero
