@@ -45,7 +45,8 @@ html { overflow-anchor: none; }
 }
 .brand { @apply font-heading text-[18px] md:text-[20px] font-extrabold tracking-[-0.02em] text-brand-ink rounded-pill px-2 focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(204,255,51,0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-base-cream; }
 .menu.desktop { @apply hidden md:flex items-center gap-8 text-[15px]; }
-.menu.mobile-secondary { @apply flex md:hidden items-center gap-2; }
+/* remove mobile-secondary row to avoid overflow */
+.menu.mobile-secondary { display: none; }
 .menu.desktop a { @apply text-base-text hover:text-brand-ink rounded-pill px-2 py-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(204,255,51,0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-base-cream; }
 .actions { @apply flex items-center gap-2 md:gap-3; }
 
@@ -55,7 +56,7 @@ html { overflow-anchor: none; }
 .btn-outline { @apply inline-flex items-center gap-2 py-[10px] px-[18px] rounded-pill border-[1.5px] border-base-border bg-transparent text-base-text hover:bg-base-overlay focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(204,255,51,0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-base-cream; }
 .btn-invert { @apply inline-flex items-center gap-2 py-[10px] px-[18px] rounded-pill bg-brand-ink text-brand-lime font-semibold shadow-soft hover:opacity-90 focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(204,255,51,0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-brand-lime; }
 .btn-outline.small { @apply py-[8px] px-[14px]; }
-
+  
 /* Hamburger */
 .hamburger { @apply md:hidden relative w-9 h-9 rounded-pill border border-base-border bg-transparent flex items-center justify-center; }
 .hamburger span { @apply block absolute w-5 h-[2px] bg-base-text transition; }
