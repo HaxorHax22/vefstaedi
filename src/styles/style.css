@@ -38,15 +38,19 @@ html { overflow-anchor: none; }
 .site-header { @apply sticky top-0 z-50; }
 .nav-shell { @apply mt-3 mb-3; }
 .nav {
-  @apply flex h-[72px] items-center justify-between px-6 rounded-lg border border-base-border shadow-soft;
+  @apply flex h-[60px] md:h-[72px] items-center justify-between px-3 md:px-6 rounded-lg border border-base-border shadow-soft;
   background: rgba(246,243,234,0.85);
   -webkit-backdrop-filter: saturate(180%) blur(10px);
   backdrop-filter: saturate(180%) blur(10px);
 }
-.brand { @apply font-heading text-[20px] font-extrabold tracking-[-0.02em] text-brand-ink rounded-pill px-2 focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(204,255,51,0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-base-cream; }
+.brand { @apply font-heading text-[18px] md:text-[20px] font-extrabold tracking-[-0.02em] text-brand-ink rounded-pill px-2 focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(204,255,51,0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-base-cream; }
 .menu.desktop { @apply hidden md:flex items-center gap-8 text-[15px]; }
+.menu.mobile-secondary { @apply flex md:hidden items-center gap-2; }
 .menu.desktop a { @apply text-base-text hover:text-brand-ink rounded-pill px-2 py-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(204,255,51,0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-base-cream; }
-.actions { @apply flex items-center gap-3; }
+.actions { @apply flex items-center gap-2 md:gap-3; }
+
+/* Make the nav CTA smaller on mobile if shown */
+.nav .btn-primary { @apply py-[8px] px-[14px] md:py-[10px] md:px-[18px]; }
 .btn-primary { @apply inline-flex items-center gap-2 py-[10px] px-[18px] rounded-pill bg-brand-lime text-brand-ink font-semibold shadow-soft hover:bg-brand-lime-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(204,255,51,0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-base-cream; }
 .btn-outline { @apply inline-flex items-center gap-2 py-[10px] px-[18px] rounded-pill border-[1.5px] border-base-border bg-transparent text-base-text hover:bg-base-overlay focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(204,255,51,0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-base-cream; }
 .btn-invert { @apply inline-flex items-center gap-2 py-[10px] px-[18px] rounded-pill bg-brand-ink text-brand-lime font-semibold shadow-soft hover:opacity-90 focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(204,255,51,0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-brand-lime; }
