@@ -1,7 +1,8 @@
 // Advanced animations (GSAP) respecting prefers-reduced-motion
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // Utilities (must be defined before first use)
 const qs = (s, r = document) => r.querySelector(s);
@@ -65,6 +66,27 @@ if (!reduce) {
     });
     btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.3 }));
   });
+
+// Smooth press + scroll-to-section easing for anchor buttons
+qsa('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.length < 2) return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    // Respect prefers-reduced-motion
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return; // let browser default (we set CSS smooth behavior already)
+
+    e.preventDefault();
+    const y = target.getBoundingClientRect().top + window.scrollY - 16;
+    gsap.to(window, { duration: 0.7, scrollTo: { y }, ease: 'power2.out', onComplete: () => {
+      history.pushState(null, '', href);
+    }});
+    // Subtle press animation
+    gsap.fromTo(link, { scale: 0.98 }, { scale: 1, duration: 0.2, ease: 'power2.out' });
+  }, { passive: false });
+});
 }
 // (moved utilities to top)
 
@@ -231,14 +253,45 @@ async function loadContent(nextLang) {
       a.setAttribute('aria-labelledby', btn.id);
       a.textContent = item.a;
 
+      // Prepare animated region
+      a.style.height = '0px';
+      a.style.overflow = 'hidden';
+      a.classList.add('hidden');
+
       btn.addEventListener('click', () => {
         const wasExpanded = btn.getAttribute('aria-expanded') === 'true';
         const nowExpanded = !wasExpanded;
         btn.setAttribute('aria-expanded', String(nowExpanded));
-        a.classList.toggle('hidden', !nowExpanded);
+
+        // Update icon
         icon.innerHTML = nowExpanded
           ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg>'
           : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14M5 12h14" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg>';
+
+        if (reduce) {
+          a.classList.toggle('hidden', !nowExpanded);
+          a.style.height = nowExpanded ? 'auto' : '0px';
+          return;
+        }
+
+        if (nowExpanded) {
+          a.classList.remove('hidden');
+          // measure target height
+          a.style.height = 'auto';
+          const targetHeight = `${a.scrollHeight}px`;
+          a.style.height = '0px';
+          gsap.to(a, { height: targetHeight, opacity: 1, duration: 0.35, ease: 'power2.out', onComplete: () => {
+            a.style.height = 'auto';
+          }});
+          gsap.fromTo(btn, { scale: 0.98 }, { scale: 1, duration: 0.18, ease: 'power2.out' });
+        } else {
+          const currentHeight = `${a.scrollHeight}px`;
+          a.style.height = currentHeight; // ensure gsap sees current height
+          gsap.to(a, { height: 0, opacity: 0.9, duration: 0.28, ease: 'power2.in', onComplete: () => {
+            a.classList.add('hidden');
+            a.style.height = '0px';
+          }});
+        }
       });
 
       wrapper.append(btn, a);
@@ -249,11 +302,19 @@ async function loadContent(nextLang) {
   document.documentElement.lang = nextLang;
 }
 
-qs('#langToggle')?.addEventListener('click', async () => {
+function toggleLangHandler() {
   lang = lang === 'is' ? 'en' : 'is';
   try { localStorage.setItem(storageKey, lang); } catch {}
-  await loadContent(lang);
+  loadContent(lang);
+}
+
+qs('#langToggle')?.addEventListener('click', () => {
+  toggleLangHandler();
 });
+qs('#langToggleMobile')?.addEventListener('click', () => {
+  toggleLangHandler();
+});
+ 
 
 // Initial content load
 loadContent(lang);
