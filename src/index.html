@@ -107,15 +107,31 @@
 
     <main id="main">
       <!-- Hero -->
-      <section id="hero" class="section hero">
-        <div class="container">
-          <div class="reveal text-center">
-            <h1 class="display" data-i18n="hero.title">Við byggjum vefi sem selja.</h1>
+      <section id="hero" class="section hero relative overflow-hidden">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container relative z-[1]">
+          <div class="reveal text-center max-w-[900px] mx-auto">
+            <div class="kicker mx-auto">Nútímaleg vefgerð • Hraðar afhendingar</div>
+            <h1 class="display mt-3" data-i18n="hero.title">Við byggjum vefi sem selja.</h1>
             <p class="subtitle mx-auto" data-i18n="hero.subtitle">Hraðar afhendingar, nútímaleg hönnun, skroll-hreyfingar og snjallar snertingar. Bilingual (IS/EN) og hýst á Netlify með viðhaldi.</p>
             <div class="cta-row justify-center">
               <a href="#hafdu-samband" class="btn-primary" data-i18n="hero.primaryAction">Bóka kynningu</a>
               <a href="#verkefni" class="btn-outline" data-i18n="hero.secondaryAction">Sjá verk</a>
             </div>
+            <ul class="hero-points mx-auto">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                48–72 klst demo
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Nútímaleg hönnun
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Netlify + viðhald
+              </li>
+            </ul>
           </div>
         </div>
       </section>

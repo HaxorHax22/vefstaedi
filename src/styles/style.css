@@ -89,9 +89,13 @@ html { overflow-anchor: none; }
 .section { @apply py-10; }
 .grid-2 { @apply grid grid-cols-1 lg:grid-cols-2 gap-8 items-center; }
 .grid-3 { @apply grid grid-cols-1 md:grid-cols-3 gap-5; }
-.hero .display { @apply font-heading text-brand-ink font-extrabold tracking-[-0.02em] leading-[1.05] text-[42px] sm:text-[48px] md:text-[56px]; }
-.hero .subtitle { @apply mt-5 text-[16px] sm:text-[18px] leading-relaxed text-base-muted max-w-[56ch]; }
-.hero .cta-row { @apply mt-7 flex flex-wrap gap-3; }
+.hero .display { @apply font-heading text-brand-ink font-extrabold tracking-[-0.02em] leading-[1.05] text-[42px] sm:text-[50px] md:text-[60px]; }
+.hero .subtitle { @apply mt-4 text-[16px] sm:text-[18px] leading-relaxed text-base-muted max-w-[60ch]; }
+.hero .cta-row { @apply mt-6 flex flex-wrap gap-3; }
+.hero .kicker { @apply inline-flex items-center gap-2 rounded-pill border border-base-border bg-white/70 px-3 py-1 text-[12px] font-medium text-base-text shadow-soft; }
+.hero .hero-points { @apply mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2 max-w-[720px]; }
+.hero .hero-points li { @apply inline-flex items-center gap-2 justify-center rounded-pill border border-base-border bg-white/70 px-3 py-2 text-[14px] text-base-text; }
+.hero .hero-bg { position: absolute; inset: -40% -20% 0 -20%; background: radial-gradient(600px 240px at 50% 0, rgba(204,255,51,0.35), rgba(204,255,51,0) 60%), linear-gradient(180deg,#F6F3EA 0%, #F6F3EA 100%); pointer-events: none; }
 .hero-media { @apply h-[320px] sm:h-[360px] md:h-[420px] w-full rounded-xl border border-base-border shadow-card; background: linear-gradient(180deg,#FFFFFF 0%,#F6F3EA 100%); object-fit: cover; }
 
 /* Trustbar */
