@@ -183,6 +183,7 @@ try { lang = localStorage.getItem(storageKey) || 'is'; } catch {}
 document.documentElement.lang = lang;
 
 async function loadContent(nextLang) {
+  // In production the app is served from dist; ensure JSON is accessible via public/
   const file = nextLang === 'en' ? '/data/content.en.json' : '/data/content.is.json';
   const res = await fetch(file, { cache: 'no-cache' });
   const json = await res.json();
@@ -204,6 +205,7 @@ async function loadContent(nextLang) {
   qsa('[data-i18n="nav.pricing"]').forEach((e) => (e.textContent = nav.pricing));
   qsa('[data-i18n="nav.work"]').forEach((e) => (e.textContent = nav.work));
   qsa('[data-i18n="nav.contact"]').forEach((e) => (e.textContent = nav.contact));
+  qsa('[data-i18n="nav.faq"]').forEach((e) => (e.textContent = nav.faq));
 
   // CTA banner
   qsa('[data-i18n="cta.button"]').forEach((e) => (e.textContent = json.cta.button));
