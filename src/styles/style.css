@@ -7,7 +7,7 @@
 
 /* Base */
 html, body { height: 100%; }
-body { @apply bg-base-cream text-base-text font-body antialiased; }
+body { @apply bg-base-cream text-base-text font-body antialiased; overflow-x: hidden; }
 html { overflow-anchor: none; }
 
 /* Scroll progress */
@@ -95,8 +95,8 @@ html { overflow-anchor: none; }
 
 /* Cards */
 .card { @apply rounded-xl border border-base-border bg-base-card shadow-card p-6; }
-.card h3 { @apply text-[22px] md:text-[28px] font-bold text-brand-ink; }
-.card p { @apply mt-2 text-[15px] md:text-[16px] leading-normal text-base-muted; }
+.card h3 { @apply text-[21px] md:text-[28px] font-bold text-brand-ink; }
+.card p { @apply mt-2 text-[15px] md:text-[16px] leading-normal text-base-muted; overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
 .chips { @apply mt-3 flex flex-wrap gap-2; }
 .chip { @apply inline-flex items-center rounded-pill border border-base-border bg-white px-3 py-2 text-[14px]; }
 
@@ -110,7 +110,7 @@ html { overflow-anchor: none; }
 
 /* Process */
 .process { @apply rounded-lg border border-base-border bg-white shadow-soft p-6; }
-.process h4 { @apply text-[22px] font-semibold text-brand-ink; }
+.process h4 { @apply text-[21px] md:text-[22px] font-semibold text-brand-ink; }
 .process p { @apply mt-2 text-base-muted; }
 
 /* Process with numbered badges */
@@ -120,8 +120,8 @@ html { overflow-anchor: none; }
 /* Pricing */
 .pricing-card { @apply rounded-xl border border-base-border shadow-card bg-white p-6 md:p-8 relative; }
 .pricing-card .badge { @apply absolute right-4 top-4 inline-flex items-center rounded-pill bg-brand-lime text-brand-ink text-[12px] font-semibold px-3 py-1; }
-.pricing-card h3 { @apply text-[20px] font-semibold text-brand-ink; }
-.pricing-card .features { @apply mt-3 space-y-2 text-[15px] md:text-[16px] leading-normal text-base-text; }
+.pricing-card h3 { @apply text-[19px] md:text-[22px] font-semibold text-brand-ink; }
+.pricing-card .features { @apply mt-3 space-y-2 text-[15px] md:text-[16px] leading-normal text-base-text; overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
 .pricing-note { @apply mt-4 text-[14px] text-base-muted; }
 .maintenance { @apply mt-6 rounded-xl border border-base-border shadow-card bg-white p-6 flex flex-wrap items-center justify-between gap-4; }
 .maintenance h4 { @apply text-[22px] font-semibold text-brand-ink; }
