@@ -194,6 +194,7 @@ html { overflow-anchor: none; }
 .brand-name { @apply font-heading font-extrabold tracking-[-0.02em]; }
 .footer-nav { @apply flex items-center gap-5; }
 .footer-nav a { @apply hover:underline; }
+.footer-nav a[href="#verd"] { display: none; }
 
 /* Animations */
 @media (prefers-reduced-motion: reduce) {
