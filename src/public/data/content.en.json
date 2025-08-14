@@ -6,8 +6,9 @@
     "primaryAction": "Book a demo",
     "secondaryAction": "View work"
   },
-  "cta": { "button": "Get a quote" },
+  "cta": { "title": "A modern site in just a few days.", "button": "Get a quote" },
   "contact": { "title": "Contact us", "submit": "Send request" },
+  "skipLink": "Skip to content",
   "about": {
     "kicker": "Who we are",
     "title": "About us",
@@ -17,6 +18,42 @@
     "stat1": "20+ projects delivered",
     "stat2": "Avg. delivery: 3 days",
     "stat3": "100% happy clients"
+  },
+  "services": {
+    "card1": { "title": "Design & Development", "desc": "Fast, beautiful websites with clean code and high performance." },
+    "card2": { "title": "Netlify & Delivery", "desc": "Simple setup flow, SSL, CDN and built-in reliability." },
+    "card3": { "title": "Care & Hosting", "desc": "Updates, security, backups and support — all in one place." }
+  },
+  "process": {
+    "step1": { "title": "Kickoff call", "desc": "Goals, content and style — 20 min online." },
+    "step2": { "title": "Design + demo", "desc": "First preview delivered in 48–72 hours." },
+    "step3": { "title": "Delivery", "desc": "Approvals, polish, hosting and handover." }
+  },
+  "benefits": {
+    "title": "Why Vefstæðið?",
+    "card1": { "title": "Faster execution", "desc": "Demo in a few days with a clear plan and transparency." },
+    "card2": { "title": "Modern stack", "desc": "Tailwind, Netlify and automation for quality and performance." },
+    "card3": { "title": "Long-term partner", "desc": "Care, consulting and updates to keep your site in top shape." }
+  },
+  "results": {
+    "title": "Results",
+    "cards": [
+      { "caption": "Demo delivered" },
+      { "caption": "Avg. delivery" },
+      { "caption": "Projects shipped" },
+      { "caption": "Happy clients" }
+    ]
+  },
+  "pricing": {
+    "note": "All prices in ISK. VAT not included. Annual care optional.",
+    "card1": { "title": "Starter", "features": ["1 page (landing)", "Signup form", "Mobile optimization", "Netlify hosting"] },
+    "card2": { "badge": "Popular", "title": "Most popular", "features": ["Everything in Starter", "Up to 3 pages", "Signups + basic SEO", "Light animations"] },
+    "card3": { "title": "Custom", "features": ["Custom features", "More pages and APIs", "Advanced animations", "A/B testing"] }
+  },
+  "maintenance": {
+    "title": "Care",
+    "tags": ["Updates and security", "Backups and monitoring", "Small tasks and consulting"],
+    "price": "45,000 ISK / year"
   },
   "faq": [
     { "q": "How fast can you deliver?", "a": "We demo in 48–72 hours and usually ship within 5–10 days depending on scope." },

@@ -6,8 +6,9 @@
     "primaryAction": "Bóka kynningu",
     "secondaryAction": "Sjá verk"
   },
-  "cta": { "button": "Fá verðtilboð" },
+  "cta": { "title": "Nútímalegur vefur á örfáum dögum.", "button": "Fá verðtilboð" },
   "contact": { "title": "Hafðu samband", "submit": "Senda fyrirspurn" },
+  "skipLink": "Sleppa á efni",
   "about": {
     "kicker": "Hver erum við",
     "title": "Um okkur",
@@ -17,6 +18,42 @@
     "stat1": "20+ afhent verkefni",
     "stat2": "Meðalafhending: 3 dagar",
     "stat3": "100% ánægðir viðskiptavinir"
+  },
+  "services": {
+    "card1": { "title": "Vefhönnun & Forritun", "desc": "Hraðvirkir, fallegir vefir með hreinu kerfi og mikilli afköstun." },
+    "card2": { "title": "Netlify & Afgreiðsla", "desc": "Einfallt uppsetningarflæði, SSL, CDN og stöðugleiki innbyggður." },
+    "card3": { "title": "Viðhald & Hýsing", "desc": "Uppfærslur, öryggi, afrit og aðstoð — allt á einum stað." }
+  },
+  "process": {
+    "step1": { "title": "Hraður fundur", "desc": "Markmið, efni og stíll — 20 mín á netinu." },
+    "step2": { "title": "Hönnun + demo", "desc": "Fáanlegt kynningarsíða innan 48–72 klst." },
+    "step3": { "title": "Afgreiðsla", "desc": "Samþykktir, smáatriði, hýsing og afhending." }
+  },
+  "benefits": {
+    "title": "Af hverju Vefstæðið?",
+    "card1": { "title": "Hraðari vinnsla", "desc": "Demo á örfáum dögum með skýru yfirliti og gagnsæi í ferli." },
+    "card2": { "title": "Nútímaleg tækni", "desc": "Tailwind, Netlify og sjálfvirkni sem tryggir gæði og frammistöðu." },
+    "card3": { "title": "Langtímasamstarf", "desc": "Viðhald, ráðgjöf og uppfærslur til að halda vefnum í toppstandi." }
+  },
+  "results": {
+    "title": "Niðurstöður",
+    "cards": [
+      { "caption": "Demo afhent" },
+      { "caption": "Meðalafhending" },
+      { "caption": "Afhent verkefni" },
+      { "caption": "Ánægðir viðskiptavinir" }
+    ]
+  },
+  "pricing": {
+    "note": "Allar verðtölur í ISK. Vsk. ekki innifalinn. Árleg þjónusta valkvæð.",
+    "card1": { "title": "Grunnpakki", "features": ["1 síða (landing)", "Skráningareyðublað", "Hagræðing fyrir farsíma", "Hýsing á Netlify"] },
+    "card2": { "badge": "Vinsælast", "title": "Vinsælasti pakki", "features": ["Allt úr Grunnpakka", "Allt að 3 síður", "Skráningar + grunn-SEO", "Léttar hreyfingar"] },
+    "card3": { "title": "Sérlausn", "features": ["Sérsniðin virkni", "Fleiri síður og API", "Flóknar hreyfingar", "A/B prófanir"] }
+  },
+  "maintenance": {
+    "title": "Viðhald",
+    "tags": ["Uppfærslur og öryggi", "Afrit og vöktun", "Smáverk og ráðgjöf"],
+    "price": "45.000 kr / ár"
   },
   "faq": [
     { "q": "Hversu fljótt getið þið skilað?", "a": "Við sýnum demo á 48–72 klst og klárum venjulega innan 5–10 daga, eftir efni og umfangi." },
