@@ -31,6 +31,7 @@
   },
   "benefits": {
     "title": "Why Vefstæðið?",
+    "intro": "Fast delivery, modern design and solid execution. We use a modern workflow, clean code and automation to ship a professional site that serves your goals.",
     "card1": { "title": "Faster execution", "desc": "Demo in a few days with a clear plan and transparency." },
     "card2": { "title": "Modern stack", "desc": "Tailwind, Netlify and automation for quality and performance." },
     "card3": { "title": "Long-term partner", "desc": "Care, consulting and updates to keep your site in top shape." }
@@ -54,6 +55,14 @@
     "title": "Care",
     "tags": ["Updates and security", "Backups and monitoring", "Small tasks and consulting"],
     "price": "45,000 ISK / year"
+  },
+  "contactLabels": {
+    "nafn": "Name",
+    "fyrirtaeki": "Company",
+    "tolvupostur": "Email",
+    "simanumer": "Phone number",
+    "budget": "Estimated budget",
+    "skilabod": "Message"
   },
   "faq": [
     { "q": "How fast can you deliver?", "a": "We demo in 48–72 hours and usually ship within 5–10 days depending on scope." },
