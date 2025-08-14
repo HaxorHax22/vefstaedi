@@ -223,7 +223,8 @@ html { overflow-anchor: none; }
 
 /* Results */
 .result-card { @apply rounded-xl border border-base-border bg-white shadow-soft p-6 text-center; }
-.result-value { @apply font-heading text-brand-ink font-extrabold tracking-[-0.02em] text-[28px] md:text-[36px]; }
+.result-card .result-value .unit { display:block; font-size: 0.64em; font-weight: 700; margin-top: 6px; }
+.result-value { @apply font-heading text-brand-ink font-extrabold tracking-[-0.02em] text-[28px] md:text-[36px]; white-space: nowrap; line-height: 1.1; }
 .result-caption { @apply mt-1 text-base-muted; }
 
 

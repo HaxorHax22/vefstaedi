@@ -293,7 +293,23 @@ async function loadContent(nextLang) {
   // Results numeric values (if provided)
   const resultValuesEls = qsa('#nidurstodur .result-card .result-value');
   if (resultValuesEls.length && Array.isArray(json.results?.values)) {
-    resultValuesEls.forEach((el, idx) => { if (json.results.values[idx]) el.textContent = json.results.values[idx]; });
+    resultValuesEls.forEach((el, idx) => {
+      const val = json.results.values[idx];
+      if (!val) return;
+      // If value contains a space (e.g., "48–72 hours"), split last token as unit
+      const parts = String(val).split(' ');
+      if (parts.length > 1) {
+        const unit = parts.pop();
+        el.textContent = parts.join(' ');
+        // add a unit line for better wrapping
+        const unitEl = document.createElement('span');
+        unitEl.className = 'unit';
+        unitEl.textContent = unit;
+        el.appendChild(unitEl);
+      } else {
+        el.textContent = val;
+      }
+    });
   }
 
   // Pricing
