@@ -254,9 +254,29 @@ async function loadContent(nextLang) {
 
   // Benefits title
   const benefitsTitle = qs('#why-heading'); if (benefitsTitle && json.benefits?.title) benefitsTitle.textContent = json.benefits.title;
+  const benefitsCards = qsa('section[aria-labelledby="why-heading"] .card');
+  if (benefitsCards[0] && json.benefits?.card1) {
+    const h = benefitsCards[0].querySelector('h4'); const p = benefitsCards[0].querySelector('p');
+    if (h && json.benefits.card1.title) h.textContent = json.benefits.card1.title;
+    if (p && json.benefits.card1.desc) p.textContent = json.benefits.card1.desc;
+  }
+  if (benefitsCards[1] && json.benefits?.card2) {
+    const h = benefitsCards[1].querySelector('h4'); const p = benefitsCards[1].querySelector('p');
+    if (h && json.benefits.card2.title) h.textContent = json.benefits.card2.title;
+    if (p && json.benefits.card2.desc) p.textContent = json.benefits.card2.desc;
+  }
+  if (benefitsCards[2] && json.benefits?.card3) {
+    const h = benefitsCards[2].querySelector('h4'); const p = benefitsCards[2].querySelector('p');
+    if (h && json.benefits.card3.title) h.textContent = json.benefits.card3.title;
+    if (p && json.benefits.card3.desc) p.textContent = json.benefits.card3.desc;
+  }
 
   // Results title
   const resultsTitle = qs('#results-heading'); if (resultsTitle && json.results?.title) resultsTitle.textContent = json.results.title;
+  const resultCards = qsa('#nidurstodur .result-card .result-caption');
+  if (resultCards.length && Array.isArray(json.results?.cards)) {
+    resultCards.forEach((el, idx) => { if (json.results.cards[idx]?.caption) el.textContent = json.results.cards[idx].caption; });
+  }
 
   // Pricing
   if (json.pricing?.note) qsa('.pricing-note').forEach((e) => e.textContent = json.pricing.note);
