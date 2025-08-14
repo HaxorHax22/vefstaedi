@@ -67,6 +67,57 @@ if (!reduce) {
     btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.3 }));
   });
 
+  // Section card reveals (services, benefits, results)
+  gsap.utils.toArray('.card, .result-card').forEach((el) => {
+    gsap.from(el, {
+      y: 24,
+      opacity: 0,
+      scale: 0.98,
+      duration: 0.6,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 80%',
+      }
+    });
+  });
+
+  // Trustbar logos subtle float-in
+  gsap.utils.toArray('#verkefni .logo').forEach((el, i) => {
+    gsap.from(el, {
+      y: 16,
+      opacity: 0,
+      duration: 0.5,
+      delay: i * 0.05,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 85%' }
+    });
+  });
+
+  // Parallax on hero devices
+  const heroWrap = qs('#hero');
+  if (heroWrap) {
+    const phone = qs('.hero-device-wrap');
+    const laptop = qs('.laptop-image');
+    if (phone) {
+      gsap.to(phone, { y: 20, scrollTrigger: { trigger: heroWrap, start: 'top top', end: 'bottom top', scrub: 0.3 } });
+    }
+    if (laptop) {
+      gsap.to(laptop, { y: 28, scrollTrigger: { trigger: heroWrap, start: 'top top', end: 'bottom top', scrub: 0.3 } });
+    }
+  }
+
+  // About image subtle parallax + tilt
+  const aboutImg = qs('#um-okkur img');
+  if (aboutImg) {
+    gsap.fromTo(aboutImg, { y: 20, rotate: -1 }, {
+      y: -10,
+      rotate: 0.5,
+      ease: 'none',
+      scrollTrigger: { trigger: '#um-okkur', start: 'top 80%', end: 'bottom 20%', scrub: 0.3 }
+    });
+  }
+
 // Smooth press + scroll-to-section easing for anchor buttons
 qsa('a[href^="#"]').forEach((link) => {
   link.addEventListener('click', (e) => {
@@ -312,6 +363,31 @@ async function loadContent(nextLang) {
     });
   }
 
+  // Animate result counters when they enter
+  const resultCardsWrap = qs('#nidurstodur');
+  if (resultCardsWrap && resultValuesEls.length) {
+    resultValuesEls.forEach((el) => {
+      const fullText = el.childNodes[0]?.textContent || el.textContent || '';
+      // Extract numeric part (handle ranges like 48–72)
+      const rangeMatch = fullText.match(/^(\d+)[^\d]+(\d+)/);
+      const numMatch = fullText.match(/(\d+(?:\.\d+)?)/);
+      if (rangeMatch) {
+        const start = Number(rangeMatch[1]);
+        const end = Number(rangeMatch[2]);
+        gsap.fromTo({ v: start }, { v: end, duration: 1.2, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' }, onUpdate: function() {
+          const val = Math.round(this.targets()[0].v);
+          el.childNodes[0].textContent = `${val}–${end}`;
+        }});
+      } else if (numMatch) {
+        const end = Number(numMatch[1]);
+        gsap.fromTo({ v: 0 }, { v: end, duration: 0.9, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' }, onUpdate: function() {
+          const val = Math.round(this.targets()[0].v);
+          el.childNodes[0] ? el.childNodes[0].textContent = String(val) : el.textContent = String(val);
+        }});
+      }
+    });
+  }
+
   // Pricing
   if (json.pricing?.note) qsa('.pricing-note').forEach((e) => e.textContent = json.pricing.note);
   const pricingCards = qsa('#verd .pricing-card');
@@ -409,6 +485,11 @@ async function loadContent(nextLang) {
       faqRoot.appendChild(wrapper);
     });
   }
+
+  // Safety: ensure reveal sections are visible even if an observer/animation fails
+  qsa('section[aria-labelledby="why-heading"] .card, #nidurstodur .result-card').forEach((el) => {
+    el.classList.add('in-view');
+  });
 
   document.documentElement.lang = nextLang;
 }
