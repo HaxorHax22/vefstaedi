@@ -43,7 +43,8 @@
       { "caption": "Meðalafhending" },
       { "caption": "Afhent verkefni" },
       { "caption": "Ánægðir viðskiptavinir" }
-    ]
+    ],
+    "values": ["48–72 klst", "3 dagar", "2", "100%"]
   },
   "pricing": {
     "note": "Allar verðtölur í ISK. Vsk. ekki innifalinn. Árleg þjónusta valkvæð.",
