@@ -223,6 +223,18 @@ async function loadContent(nextLang) {
   // Contact
   qsa('[data-i18n="contact.title"]').forEach((e) => (e.textContent = json.contact.title));
   qsa('[data-i18n="contact.submit"]').forEach((e) => (e.textContent = json.contact.submit));
+  // Contact form field labels based on input name
+  const contactForm = qs('form[name="contact"]');
+  if (contactForm && json.contactLabels) {
+    qsa('label.field', contactForm).forEach((label) => {
+      const span = label.querySelector('span');
+      const control = label.querySelector('input, textarea, select');
+      const key = control?.getAttribute('name');
+      if (span && key && json.contactLabels[key]) {
+        span.textContent = json.contactLabels[key];
+      }
+    });
+  }
 
   // About
   qsa('[data-i18n="about.kicker"]').forEach((e) => (e.textContent = json.about.kicker));
