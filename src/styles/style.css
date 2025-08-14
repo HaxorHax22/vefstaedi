@@ -102,6 +102,7 @@ html { overflow-anchor: none; }
 /* Seamless PNG hero device image */
 .hero-device-wrap { position: relative; display: inline-block; }
 .hero-device { display:block; border:0 !important; border-radius:0 !important; outline: none; background: transparent; filter: drop-shadow(0 16px 24px rgba(20,20,20,0.10)) drop-shadow(0 4px 12px rgba(20,20,20,0.08)); }
+.hero-device, .hero-laptop { transition: opacity 600ms ease; }
 .hero-device-wrap::after {
   content: '';
   position: absolute;

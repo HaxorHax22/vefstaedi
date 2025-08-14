@@ -329,4 +329,45 @@ qs('#langToggleMobile')?.addEventListener('click', () => {
 // Initial content load
 loadContent(lang);
 
+// Hero crossfade rotation for phone and laptop
+(() => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const phoneImg = qs('.hero-device-wrap img');
+  const laptopImg = qs('.laptop-image img');
+  if (!phoneImg || !laptopImg) return;
+
+  const phoneSources = [
+    '/assets/img/hero/phone/iphone_s-s.png',
+    '/assets/img/kb_iphone.png',
+  ];
+  const laptopSources = [
+    '/assets/img/hero/laptop/laptop-s-s.png',
+    '/assets/img/hero/laptop/laptop-kb.png',
+  ];
+
+  let index = 0;
+  const duration = 0.6;
+  const delay = 6;
+
+  function swap(img, nextSrc) {
+    if (reduceMotion) {
+      img.src = nextSrc;
+      return;
+    }
+    gsap.to(img, { opacity: 0, duration, ease: 'power2.out', onComplete: () => {
+      img.src = nextSrc;
+      gsap.to(img, { opacity: 1, duration, ease: 'power2.out' });
+    }});
+  }
+
+  // Preload images
+  [...phoneSources, ...laptopSources].forEach((src) => { const i = new Image(); i.src = src; });
+
+  setInterval(() => {
+    index = (index + 1) % phoneSources.length;
+    swap(phoneImg, phoneSources[index]);
+    swap(laptopImg, laptopSources[index]);
+  }, delay * 1000);
+})();
+
 
