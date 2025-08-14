@@ -43,7 +43,8 @@
       { "caption": "Avg. delivery" },
       { "caption": "Projects shipped" },
       { "caption": "Happy clients" }
-    ]
+    ],
+    "values": ["48–72 hours", "3 days", "2", "100%"]
   },
   "pricing": {
     "note": "All prices in ISK. VAT not included. Annual care optional.",

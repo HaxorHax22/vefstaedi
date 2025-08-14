@@ -290,6 +290,11 @@ async function loadContent(nextLang) {
   if (resultCards.length && Array.isArray(json.results?.cards)) {
     resultCards.forEach((el, idx) => { if (json.results.cards[idx]?.caption) el.textContent = json.results.cards[idx].caption; });
   }
+  // Results numeric values (if provided)
+  const resultValuesEls = qsa('#nidurstodur .result-card .result-value');
+  if (resultValuesEls.length && Array.isArray(json.results?.values)) {
+    resultValuesEls.forEach((el, idx) => { if (json.results.values[idx]) el.textContent = json.results.values[idx]; });
+  }
 
   // Pricing
   if (json.pricing?.note) qsa('.pricing-note').forEach((e) => e.textContent = json.pricing.note);
