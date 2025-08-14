@@ -5,16 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Takk fyrir — Vefstæðið</title>
     <meta name="robots" content="noindex" />
+    <!-- Fonts to match site -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles/style.css" />
   </head>
   <body class="min-h-screen bg-base-cream text-base-text font-body antialiased">
     <main class="section">
-      <div class="container text-center">
-        <h1 class="font-heading text-brand-ink font-extrabold tracking-[-0.02em] text-[32px] md:text-[40px]">Takk fyrir!</h1>
-        <p class="mt-3 text-base-muted">Við höfum móttekið fyrirspurnina þína og höfum samband sem fyrst.</p>
-        <a href="/" class="btn-primary mt-6 inline-flex">Til baka á forsíðu</a>
+      <div class="container">
+        <div class="max-w-[640px] mx-auto text-center rounded-xl border border-base-border shadow-card bg-white p-8 md:p-10">
+          <div class="mx-auto w-14 h-14 rounded-full bg-brand-lime flex items-center justify-center shadow-soft">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20 6L9 17l-5-5" stroke="#141414" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h1 class="mt-4 font-heading text-brand-ink font-extrabold tracking-[-0.02em] text-[28px] md:text-[36px]">Takk fyrir!</h1>
+          <p class="mt-2 text-base-muted">Við höfum móttekið fyrirspurnina þína og höfum samband sem fyrst.</p>
+          <p id="countdown" class="mt-1 text-[14px] text-base-muted" aria-live="polite"></p>
+          <div class="mt-6">
+            <a href="/" class="btn-primary inline-flex">Til baka á forsíðu</a>
+          </div>
+        </div>
       </div>
     </main>
+    <script>
+      // Optional auto-redirect after a short delay
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const seconds = 6;
+      const el = document.getElementById('countdown');
+      if (el) {
+        let remain = seconds;
+        el.textContent = `Áframsend á forsíðu eftir ${remain}s...`;
+        const t = setInterval(() => {
+          remain -= 1;
+          el.textContent = `Áframsend á forsíðu eftir ${remain}s...`;
+          if (remain <= 0) { clearInterval(t); if (!prefersReducedMotion) window.location.href = '/'; }
+        }, 1000);
+      }
+    </script>
   </body>
   </html>
 
