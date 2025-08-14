@@ -214,9 +214,11 @@ async function loadContent(nextLang) {
   qsa('[data-i18n="nav.work"]').forEach((e) => (e.textContent = nav.work));
   qsa('[data-i18n="nav.contact"]').forEach((e) => (e.textContent = nav.contact));
   qsa('[data-i18n="nav.faq"]').forEach((e) => (e.textContent = nav.faq));
+  const skip = qs('.skip-link'); if (skip && json.skipLink) skip.textContent = json.skipLink;
 
   // CTA banner
   qsa('[data-i18n="cta.button"]').forEach((e) => (e.textContent = json.cta.button));
+  qsa('.cta-title').forEach((e) => { if (json.cta?.title) e.textContent = json.cta.title; });
 
   // Contact
   qsa('[data-i18n="contact.title"]').forEach((e) => (e.textContent = json.contact.title));
@@ -231,6 +233,51 @@ async function loadContent(nextLang) {
   qsa('[data-i18n="about.stat1"]').forEach((e) => (e.textContent = json.about.stat1));
   qsa('[data-i18n="about.stat2"]').forEach((e) => (e.textContent = json.about.stat2));
   qsa('[data-i18n="about.stat3"]').forEach((e) => (e.textContent = json.about.stat3));
+
+  // Services
+  const svc = json.services;
+  if (svc) {
+    const svcCards = qsa('#thjonusta .card');
+    if (svcCards[0]) { const h = svcCards[0].querySelector('h3'); const p = svcCards[0].querySelector('p'); if (h && svc.card1?.title) h.textContent = svc.card1.title; if (p && svc.card1?.desc) p.textContent = svc.card1.desc; }
+    if (svcCards[1]) { const h = svcCards[1].querySelector('h3'); const p = svcCards[1].querySelector('p'); if (h && svc.card2?.title) h.textContent = svc.card2.title; if (p && svc.card2?.desc) p.textContent = svc.card2.desc; }
+    if (svcCards[2]) { const h = svcCards[2].querySelector('h3'); const p = svcCards[2].querySelector('p'); if (h && svc.card3?.title) h.textContent = svc.card3.title; if (p && svc.card3?.desc) p.textContent = svc.card3.desc; }
+  }
+
+  // Process
+  const proc = json.process;
+  if (proc) {
+    const steps = qsa('.process');
+    if (steps[0]) { const h = steps[0].querySelector('h4'); const p = steps[0].querySelector('p'); if (h && proc.step1?.title) h.textContent = proc.step1.title; if (p && proc.step1?.desc) p.textContent = proc.step1.desc; }
+    if (steps[1]) { const h = steps[1].querySelector('h4'); const p = steps[1].querySelector('p'); if (h && proc.step2?.title) h.textContent = proc.step2.title; if (p && proc.step2?.desc) p.textContent = proc.step2.desc; }
+    if (steps[2]) { const h = steps[2].querySelector('h4'); const p = steps[2].querySelector('p'); if (h && proc.step3?.title) h.textContent = proc.step3.title; if (p && proc.step3?.desc) p.textContent = proc.step3.desc; }
+  }
+
+  // Benefits title
+  const benefitsTitle = qs('#why-heading'); if (benefitsTitle && json.benefits?.title) benefitsTitle.textContent = json.benefits.title;
+
+  // Results title
+  const resultsTitle = qs('#results-heading'); if (resultsTitle && json.results?.title) resultsTitle.textContent = json.results.title;
+
+  // Pricing
+  if (json.pricing?.note) qsa('.pricing-note').forEach((e) => e.textContent = json.pricing.note);
+  const pricingCards = qsa('#verd .pricing-card');
+  if (pricingCards[0]) { const h = pricingCards[0].querySelector('h3'); if (h && json.pricing.card1?.title) h.textContent = json.pricing.card1.title; }
+  if (pricingCards[1]) { const h = pricingCards[1].querySelector('h3'); if (h && json.pricing.card2?.title) h.textContent = json.pricing.card2.title; const badge = pricingCards[1].querySelector('.badge'); if (badge && json.pricing.card2?.badge) badge.textContent = json.pricing.card2.badge; }
+  if (pricingCards[2]) { const h = pricingCards[2].querySelector('h3'); if (h && json.pricing.card3?.title) h.textContent = json.pricing.card3.title; }
+  qsa('#verd .pricing-card').forEach((card, idx) => {
+    const ul = card.querySelector('.features');
+    const list = idx === 0 ? json.pricing.card1?.features : idx === 1 ? json.pricing.card2?.features : json.pricing.card3?.features;
+    if (ul && Array.isArray(list)) {
+      ul.innerHTML = '';
+      list.forEach((li) => { const el = document.createElement('li'); el.textContent = li; ul.appendChild(el); });
+    }
+  });
+  const maint = json.maintenance;
+  if (maint) {
+    const h = qs('.maintenance h4'); if (h && maint.title) h.textContent = maint.title;
+    const price = qs('.maintenance .price-small'); if (price && maint.price) price.textContent = maint.price;
+    const tagsRoot = qs('.maintenance .tags'); if (tagsRoot && Array.isArray(maint.tags)) { tagsRoot.innerHTML = ''; maint.tags.forEach(t => { const li = document.createElement('li'); li.textContent = t; tagsRoot.appendChild(li); }); }
+  }
 
   // FAQ render
   const faqRoot = qs('#faq-list');
