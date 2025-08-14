@@ -1,8 +1,8 @@
 {
   "nav": { "services": "Þjónusta", "pricing": "Verð", "work": "Verkefni", "contact": "Hafðu samband", "faq": "Algengar spurningar" },
   "hero": {
-    "title": "Við byggjum vefi sem selja.",
-    "subtitle": "Hraðar afhendingar, nútímaleg hönnun, skroll-hreyfingar og snjallar snertingar. Bilingual (IS/EN) og hýst á Netlify með viðhaldi.",
+    "title": "Betri vefur. Betra verð.",
+    "subtitle": "Hágæða vefsíður á hagstæðu verði – afhentar fljótt, með faglegri hönnun og tilbúnar til að selja.",
     "primaryAction": "Bóka kynningu",
     "secondaryAction": "Sjá verk"
   },
@@ -12,9 +12,9 @@
   "about": {
     "kicker": "Hver erum við",
     "title": "Um okkur",
-    "p1": "Við erum tveir félagar úr Verzlunarskólanum sem deilum ástríðu fyrir hönnun, frumkvöðlastarfi og tækni.",
-    "p2": "Eftir að hafa unnið saman að ýmsum verkefnum síðustu þrjú ár höfum við nú stofnað Vefstæðið – okkar fyrsta eigin rekstur – samhliða því að hefja nám í rekstrarverkfræði í HR.",
-    "p3": "Við einsetjum okkur að hanna faglegar og hraðvirkar vefsíður sem líta vel út, skila árangri og auðvelda rekstur viðskiptavina okkar. Hvort sem þú ert að stofna fyrirtæki eða vilt lyfta núverandi síðu upp á næsta stig, þá sjáum við til þess að það gangi hratt, vel og án vesens.",
+    "p1": "Við erum Hannes og Stefán, tveir félagar úr Verzlunarskólanum sem deilum ástríðu fyrir hönnun, frumkvöðlastarfi og tækni.",
+    "p2": "Eftir að hafa unnið saman að fjölmörgum verkefnum síðustu ár ákváðum við að stofna Vefstæðið – okkar fyrsta eigin rekstur – samhliða námi í rekstrarverkfræði við Háskólann í Reykjavík.",
+    "p3": "Markmið okkar er að hanna faglegar og hraðvirkar vefsíður sem líta vel út, skila árangri og einfalda rekstur viðskiptavina okkar. Hvort sem þú ert að stofna fyrirtæki eða vilt færa núverandi vef upp á næsta stig, sjáum við til þess að ferlið verði hratt, faglegt og án óþarfa vesenis.",
     "stat1": "20+ afhent verkefni",
     "stat2": "Meðalafhending: 3 dagar",
     "stat3": "100% ánægðir viðskiptavinir"

@@ -100,9 +100,6 @@
               <li role="none"><a role="menuitem" href="#hafdu-samband" data-i18n="nav.contact">Hafðu samband</a></li>
               <li role="none"><a role="menuitem" href="#faq" data-i18n="nav.faq">Algengar spurningar</a></li>
             </ul>
-            <div class="mobile-cta">
-              <a href="#hafdu-samband" class="btn-primary w-full" data-i18n="hero.primaryAction">Bóka kynningu</a>
-            </div>
           </div>
         </div>
       </div>
@@ -113,11 +110,10 @@
       <section id="hero" class="section hero">
         <div class="container">
           <div class="reveal text-center">
-            <h1 class="display" data-i18n="hero.title">Við byggjum vefi sem selja.</h1>
-            <p class="subtitle mx-auto" data-i18n="hero.subtitle">Hraðar afhendingar, nútímaleg hönnun, skroll-hreyfingar og snjallar snertingar. Bilingual (IS/EN) og hýst á Netlify með viðhaldi.</p>
+            <h1 class="display" data-i18n="hero.title">Betri vefur. Betra verð.</h1>
+            <p class="subtitle mx-auto" data-i18n="hero.subtitle">Hágæða vefsíður á hagstæðu verði – afhentar fljótt, með faglegri hönnun og tilbúnar til að selja.</p>
             <div class="cta-row justify-center">
               <a href="#hafdu-samband" class="btn-primary" data-i18n="hero.primaryAction">Bóka kynningu</a>
-              <a href="#verkefni" class="btn-outline" data-i18n="hero.secondaryAction">Sjá verk</a>
             </div>
             <div class="hero-media-grid grid grid-cols-1 lg:grid-cols-2 gap-8 items-center justify-items-center justify-center mt-6 sm:mt-8 mb-6 sm:mb-8 mx-auto">
               <div class="hero-device-wrap">
@@ -138,9 +134,9 @@
             
             <h2 id="about-heading" class="font-heading text-brand-ink font-extrabold tracking-[-0.02em] leading-[1.15] text-[32px] sm:text-[36px]" data-i18n="about.title">Um okkur</h2>
             <div class="mt-5 space-y-4 text-[16px] leading-relaxed text-base-text">
-              <p data-i18n="about.p1">Við hjá Vefstæðinu sérhæfum okkur í að hanna og forrita hraða, fallega og árangursríka vefi.</p>
-              <p data-i18n="about.p2">Með áralanga reynslu í vefhönnun og þróun tryggjum við að hver síða sé bæði falleg og hagnýt.</p>
-              <p data-i18n="about.p3">Við leggjum áherslu á hraða afhendingu, nútímalega hönnun og persónulega þjónustu.</p>
+              <p data-i18n="about.p1">Við erum Hannes og Stefán, tveir félagar úr Verzlunarskólanum sem deilum ástríðu fyrir hönnun, frumkvöðlastarfi og tækni.</p>
+              <p data-i18n="about.p2">Eftir að hafa unnið saman að fjölmörgum verkefnum síðustu ár ákváðum við að stofna Vefstæðið – okkar fyrsta eigin rekstur – samhliða námi í rekstrarverkfræði við Háskólann í Reykjavík.</p>
+              <p data-i18n="about.p3">Markmið okkar er að hanna faglegar og hraðvirkar vefsíður sem líta vel út, skila árangri og einfalda rekstur viðskiptavina okkar. Hvort sem þú ert að stofna fyrirtæki eða vilt færa núverandi vef upp á næsta stig, sjáum við til þess að ferlið verði hratt, faglegt og án óþarfa vesenis.</p>
             </div>
             
           </div>
@@ -303,8 +299,19 @@
               <label class="field"><span>Nafn</span><input name="nafn" required /></label>
               <label class="field"><span>Fyrirtæki</span><input name="fyrirtaeki" /></label>
               <label class="field"><span>Tölvupóstur</span><input type="email" name="tolvupostur" required /></label>
-              <label class="field"><span>Símanúmer</span><input type="tel" name="simanumer" /></label>
-              <label class="field full"><span>Áætlað budget</span><input name="budget" /></label>
+              <label class="field"><span>Símanúmer</span><input type="tel" name="simanumer" required inputmode="tel" /></label>
+              <label class="field full"><span>Áætlað budget</span>
+                <select name="budget" required>
+                  <option value="" disabled selected>Veldu verð</option>
+                  <option>100.000 kr</option>
+                  <option>150.000 kr</option>
+                  <option>200.000 kr</option>
+                  <option>250.000 kr</option>
+                  <option>300.000 kr</option>
+                  <option>350.000 kr</option>
+                  <option>400.000 kr</option>
+                </select>
+              </label>
               <label class="field full"><span>Skilaboð</span><textarea name="skilabod" rows="5"></textarea></label>
               <div class="actions">
                 <button type="submit" class="btn-primary" data-i18n="contact.submit">Senda fyrirspurn</button>

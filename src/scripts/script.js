@@ -316,8 +316,10 @@ async function loadContent(nextLang) {
   }
 
   // Benefits title + intro
-  const benefitsTitle = qs('#why-heading'); if (benefitsTitle && json.benefits?.title) benefitsTitle.textContent = json.benefits.title;
-  const benefitsIntro = qs('section[aria-labelledby="why-heading"] p'); if (benefitsIntro && json.benefits?.intro) benefitsIntro.textContent = json.benefits.intro;
+  try {
+    const benefitsTitle = qs('#why-heading'); if (benefitsTitle && json.benefits?.title) benefitsTitle.textContent = json.benefits.title;
+    const benefitsIntro = qs('section[aria-labelledby="why-heading"] p'); if (benefitsIntro && json.benefits?.intro) benefitsIntro.textContent = json.benefits.intro;
+  } catch {}
   const benefitsCards = qsa('section[aria-labelledby="why-heading"] .card');
   if (benefitsCards[0] && json.benefits?.card1) {
     const h = benefitsCards[0].querySelector('h4'); const p = benefitsCards[0].querySelector('p');
@@ -343,50 +345,54 @@ async function loadContent(nextLang) {
   }
   // Results numeric values (if provided)
   const resultValuesEls = qsa('#nidurstodur .result-card .result-value');
-  if (resultValuesEls.length && Array.isArray(json.results?.values)) {
-    resultValuesEls.forEach((el, idx) => {
-      const val = json.results.values[idx];
-      if (!val) return;
-      // If value contains a space (e.g., "48–72 hours"), split last token as unit
-      const parts = String(val).split(' ');
-      if (parts.length > 1) {
-        const unit = parts.pop();
-        el.textContent = parts.join(' ');
-        // add a unit line for better wrapping
-        const unitEl = document.createElement('span');
-        unitEl.className = 'unit';
-        unitEl.textContent = unit;
-        el.appendChild(unitEl);
-      } else {
-        el.textContent = val;
-      }
-    });
-  }
+  try {
+    if (resultValuesEls.length && Array.isArray(json.results?.values)) {
+      resultValuesEls.forEach((el, idx) => {
+        const val = json.results.values[idx];
+        if (!val) return;
+        // If value contains a space (e.g., "48–72 hours"), split last token as unit
+        const parts = String(val).split(' ');
+        if (parts.length > 1) {
+          const unit = parts.pop();
+          el.textContent = parts.join(' ');
+          // add a unit line for better wrapping
+          const unitEl = document.createElement('span');
+          unitEl.className = 'unit';
+          unitEl.textContent = unit;
+          el.appendChild(unitEl);
+        } else {
+          el.textContent = val;
+        }
+      });
+    }
+  } catch {}
 
   // Animate result counters when they enter
   const resultCardsWrap = qs('#nidurstodur');
-  if (resultCardsWrap && resultValuesEls.length) {
-    resultValuesEls.forEach((el) => {
-      const fullText = el.childNodes[0]?.textContent || el.textContent || '';
-      // Extract numeric part (handle ranges like 48–72)
-      const rangeMatch = fullText.match(/^(\d+)[^\d]+(\d+)/);
-      const numMatch = fullText.match(/(\d+(?:\.\d+)?)/);
-      if (rangeMatch) {
-        const start = Number(rangeMatch[1]);
-        const end = Number(rangeMatch[2]);
-        gsap.fromTo({ v: start }, { v: end, duration: 1.2, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' }, onUpdate: function() {
-          const val = Math.round(this.targets()[0].v);
-          el.childNodes[0].textContent = `${val}–${end}`;
-        }});
-      } else if (numMatch) {
-        const end = Number(numMatch[1]);
-        gsap.fromTo({ v: 0 }, { v: end, duration: 0.9, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' }, onUpdate: function() {
-          const val = Math.round(this.targets()[0].v);
-          el.childNodes[0] ? el.childNodes[0].textContent = String(val) : el.textContent = String(val);
-        }});
-      }
-    });
-  }
+  try {
+    if (resultCardsWrap && resultValuesEls.length) {
+      resultValuesEls.forEach((el) => {
+        const fullText = el.childNodes[0]?.textContent || el.textContent || '';
+        // Extract numeric part (handle ranges like 48–72)
+        const rangeMatch = fullText.match(/^(\d+)[^\d]+(\d+)/);
+        const numMatch = fullText.match(/(\d+(?:\.\d+)?)/);
+        if (rangeMatch) {
+          const start = Number(rangeMatch[1]);
+          const end = Number(rangeMatch[2]);
+          gsap.fromTo({ v: start }, { v: end, duration: 1.2, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' }, onUpdate: function() {
+            const val = Math.round(this.targets()[0].v);
+            if (el.childNodes[0]) el.childNodes[0].textContent = `${val}–${end}`;
+          }});
+        } else if (numMatch) {
+          const end = Number(numMatch[1]);
+          gsap.fromTo({ v: 0 }, { v: end, duration: 0.9, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' }, onUpdate: function() {
+            const val = Math.round(this.targets()[0].v);
+            el.childNodes[0] ? el.childNodes[0].textContent = String(val) : el.textContent = String(val);
+          }});
+        }
+      });
+    }
+  } catch {}
 
   // Pricing
   if (json.pricing?.note) qsa('.pricing-note').forEach((e) => e.textContent = json.pricing.note);
@@ -487,9 +493,11 @@ async function loadContent(nextLang) {
   }
 
   // Safety: ensure reveal sections are visible even if an observer/animation fails
-  qsa('section[aria-labelledby="why-heading"] .card, #nidurstodur .result-card').forEach((el) => {
-    el.classList.add('in-view');
-  });
+  try {
+    qsa('section[aria-labelledby="why-heading"] .card, #nidurstodur .result-card').forEach((el) => {
+      el.classList.add('in-view');
+    });
+  } catch {}
 
   document.documentElement.lang = nextLang;
 }
