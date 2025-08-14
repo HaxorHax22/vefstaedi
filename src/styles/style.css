@@ -95,9 +95,43 @@ html { overflow-anchor: none; }
 .grid-2 { @apply grid grid-cols-1 lg:grid-cols-2 gap-8 items-center; }
 .grid-3 { @apply grid grid-cols-1 md:grid-cols-3 gap-5; }
 .hero .display { @apply font-heading text-brand-ink font-extrabold tracking-[-0.03em] leading-[1.02] text-[50px] sm:text-[60px] md:text-[72px]; }
-.hero .subtitle { @apply mt-6 text-[18px] sm:text-[20px] leading-relaxed text-base-muted max-w-[66ch]; }
-.hero .cta-row { @apply mt-9 flex flex-wrap gap-3; }
+.hero .subtitle { @apply mt-5 text-[18px] sm:text-[20px] leading-relaxed text-base-muted max-w-[66ch]; }
+.hero .cta-row { @apply mt-7 flex flex-wrap gap-3; }
 .hero-media { @apply h-[320px] sm:h-[360px] md:h-[420px] w-full rounded-xl border border-base-border shadow-card; background: linear-gradient(180deg,#FFFFFF 0%,#F6F3EA 100%); object-fit: cover; }
+
+/* Seamless PNG hero device image */
+.hero-device-wrap { position: relative; display: inline-block; }
+.hero-device { display:block; border:0 !important; border-radius:0 !important; outline: none; background: transparent; filter: drop-shadow(0 16px 24px rgba(20,20,20,0.10)) drop-shadow(0 4px 12px rgba(20,20,20,0.08)); }
+.hero-device-wrap::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: min(70%, 420px);
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.14) 30%, rgba(0,0,0,0.08) 55%, rgba(0,0,0,0.00) 70%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* Hero media grid */
+.hero-media-grid { width: 100%; max-width: 1160px; }
+.laptop-image { position: relative; width: 100%; max-width: 720px; display: grid; justify-items: center; }
+@media (min-width: 1024px) { .laptop-image { justify-self: center; } }
+@media (max-width: 1023.98px) { .laptop-image { max-width: 560px; } }
+@media (max-width: 767.98px) { .laptop-image { max-width: 420px; } }
+.hero-laptop { display: block; border: 0; border-radius: 0; background: transparent; filter: drop-shadow(0 16px 24px rgba(20,20,20,0.10)) drop-shadow(0 4px 12px rgba(20,20,20,0.08)); }
+
+/* Subtle float animation reused */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-float { animation: heroFloat 6s ease-in-out infinite; }
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
 
 /* Trustbar */
 .trustbar .logos { @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 items-center; }
