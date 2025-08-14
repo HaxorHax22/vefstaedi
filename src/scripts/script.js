@@ -338,7 +338,7 @@ loadContent(lang);
 
   const phoneSources = [
     '/assets/img/hero/phone/iphone_s-s.png',
-    '/assets/img/kb_iphone.png',
+    '/assets/img/hero/phone/kb_iphone.png',
   ];
   const laptopSources = [
     '/assets/img/hero/laptop/laptop-s-s.png',
