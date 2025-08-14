@@ -20,9 +20,21 @@
     "stat3": "100% ánægðir viðskiptavinir"
   },
   "services": {
-    "card1": { "title": "Vefhönnun & Forritun", "desc": "Hraðvirkir, fallegir vefir með hreinu kerfi og mikilli afköstun." },
-    "card2": { "title": "Netlify & Afgreiðsla", "desc": "Einfallt uppsetningarflæði, SSL, CDN og stöðugleiki innbyggður." },
-    "card3": { "title": "Viðhald & Hýsing", "desc": "Uppfærslur, öryggi, afrit og aðstoð — allt á einum stað." }
+    "card1": {
+      "title": "Vefhönnun & Forritun",
+      "desc": "Hraðvirkir, fallegir vefir með hreinu kerfi og mikilli afköstun.",
+      "chips": ["Tailwind", "React", "SEO-friendly"]
+    },
+    "card2": {
+      "title": "Netlify & Afgreiðsla",
+      "desc": "Einfallt uppsetningarflæði, SSL, CDN og stöðugleiki innbyggður.",
+      "chips": ["Netlify", "Forms", "Analytics"]
+    },
+    "card3": {
+      "title": "Viðhald & Hýsing",
+      "desc": "Uppfærslur, öryggi, afrit og aðstoð — allt á einum stað.",
+      "chips": ["45.000 kr/ár", "Support", "Backups"]
+    }
   },
   "process": {
     "step1": { "title": "Hraður fundur", "desc": "Markmið, efni og stíll — 20 mín á netinu." },
@@ -45,6 +57,14 @@
       { "caption": "Ánægðir viðskiptavinir" }
     ],
     "values": ["48–72 klst", "3 dagar", "2", "100%"]
+  },
+  "testimonials": {
+    "title": "Vitnisburðir",
+    "items": [
+      { "author": "Kjölur Byggingafélag", "quote": "Vefstæðið skilaði hraðri og faglegri síðu sem passaði okkur fullkomlega." },
+      { "author": "SÞS", "quote": "Frábær samskipti og hnitmiðuð framkvæmd – mælum eindregið með." },
+      { "author": "Litir og Föndur", "quote": "Falleg hönnun og skýr uppsetning. Þjónustan var hröð og áreiðanleg." }
+    ]
   },
   "pricing": {
     "note": "Allar verðtölur í ISK. Vsk. ekki innifalinn. Árleg þjónusta valkvæð.",

@@ -20,9 +20,21 @@
     "stat3": "100% happy clients"
   },
   "services": {
-    "card1": { "title": "Design & Development", "desc": "Fast, beautiful websites with clean code and high performance." },
-    "card2": { "title": "Netlify & Delivery", "desc": "Simple setup flow, SSL, CDN and built-in reliability." },
-    "card3": { "title": "Care & Hosting", "desc": "Updates, security, backups and support — all in one place." }
+    "card1": {
+      "title": "Design & Development",
+      "desc": "Fast, beautiful websites with clean code and high performance.",
+      "chips": ["Tailwind", "React", "SEO-friendly"]
+    },
+    "card2": {
+      "title": "Netlify & Delivery",
+      "desc": "Simple setup flow, SSL, CDN and built-in reliability.",
+      "chips": ["Netlify", "Forms", "Analytics"]
+    },
+    "card3": {
+      "title": "Care & Hosting",
+      "desc": "Updates, security, backups and support — all in one place.",
+      "chips": ["45,000 ISK/yr", "Support", "Backups"]
+    }
   },
   "process": {
     "step1": { "title": "Kickoff call", "desc": "Goals, content and style — 20 min online." },
@@ -45,6 +57,14 @@
       { "caption": "Happy clients" }
     ],
     "values": ["48–72 hours", "3 days", "2", "100%"]
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "items": [
+      { "author": "Kjölur Byggingafélag", "quote": "Vefstæðið delivered a fast, professional site that fit us perfectly." },
+      { "author": "SÞS", "quote": "Great communication and focused execution — highly recommended." },
+      { "author": "Litir og Föndur", "quote": "Beautiful design and clear structure. Service was fast and reliable." }
+    ]
   },
   "pricing": {
     "note": "All prices in ISK. VAT not included. Annual care optional.",

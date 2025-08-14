@@ -304,6 +304,17 @@ async function loadContent(nextLang) {
     if (svcCards[0]) { const h = svcCards[0].querySelector('h3'); const p = svcCards[0].querySelector('p'); if (h && svc.card1?.title) h.textContent = svc.card1.title; if (p && svc.card1?.desc) p.textContent = svc.card1.desc; }
     if (svcCards[1]) { const h = svcCards[1].querySelector('h3'); const p = svcCards[1].querySelector('p'); if (h && svc.card2?.title) h.textContent = svc.card2.title; if (p && svc.card2?.desc) p.textContent = svc.card2.desc; }
     if (svcCards[2]) { const h = svcCards[2].querySelector('h3'); const p = svcCards[2].querySelector('p'); if (h && svc.card3?.title) h.textContent = svc.card3.title; if (p && svc.card3?.desc) p.textContent = svc.card3.desc; }
+
+    // Translate chips if provided
+    const chipGroups = [svc.card1?.chips, svc.card2?.chips, svc.card3?.chips];
+    svcCards.forEach((card, idx) => {
+      const chips = chipGroups[idx];
+      if (!chips || !Array.isArray(chips)) return;
+      const chipsRoot = card.querySelector('.chips');
+      if (!chipsRoot) return;
+      // Replace existing chips with translated ones
+      chipsRoot.innerHTML = chips.map((label) => `<span class="chip">${label}</span>`).join('');
+    });
   }
 
   // Process
@@ -492,6 +503,22 @@ async function loadContent(nextLang) {
     });
   }
 
+  // Testimonials (Vitnisburðir)
+  try {
+    const testiTitle = qs('#testimonials-heading');
+    if (testiTitle && json.testimonials?.title) testiTitle.textContent = json.testimonials.title;
+    const items = json.testimonials?.items || [];
+    const cards = qsa('#tilmaeli .testimonial-card');
+    cards.forEach((card, idx) => {
+      const item = items[idx % items.length];
+      if (!item) return;
+      const author = card.querySelector('.testimonial-author');
+      const quote = card.querySelector('.testimonial-quote');
+      if (author && item.author) author.textContent = item.author;
+      if (quote && item.quote) quote.textContent = `“${item.quote}”`;
+    });
+  } catch {}
+
   // Safety: ensure reveal sections are visible even if an observer/animation fails
   try {
     qsa('section[aria-labelledby="why-heading"] .card, #nidurstodur .result-card').forEach((el) => {
@@ -515,6 +542,22 @@ qs('#langToggleMobile')?.addEventListener('click', () => {
   toggleLangHandler();
 });
  
+
+  // Testimonials (Vitnisburðir)
+  try {
+    const testiTitle = qs('#testimonials-heading');
+    if (testiTitle && json.testimonials?.title) testiTitle.textContent = json.testimonials.title;
+    const items = json.testimonials?.items || [];
+    const cards = qsa('#tilmaeli .testimonial-card');
+    cards.forEach((card, idx) => {
+      const item = items[idx % items.length];
+      if (!item) return;
+      const author = card.querySelector('.testimonial-author');
+      const quote = card.querySelector('.testimonial-quote');
+      if (author && item.author) author.textContent = item.author;
+      if (quote && item.quote) quote.textContent = `“${item.quote}”`;
+    });
+  } catch {}
 
 // Initial content load
 loadContent(lang);
