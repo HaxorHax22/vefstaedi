@@ -252,8 +252,9 @@ async function loadContent(nextLang) {
     if (steps[2]) { const h = steps[2].querySelector('h4'); const p = steps[2].querySelector('p'); if (h && proc.step3?.title) h.textContent = proc.step3.title; if (p && proc.step3?.desc) p.textContent = proc.step3.desc; }
   }
 
-  // Benefits title
+  // Benefits title + intro
   const benefitsTitle = qs('#why-heading'); if (benefitsTitle && json.benefits?.title) benefitsTitle.textContent = json.benefits.title;
+  const benefitsIntro = qs('section[aria-labelledby="why-heading"] p'); if (benefitsIntro && json.benefits?.intro) benefitsIntro.textContent = json.benefits.intro;
   const benefitsCards = qsa('section[aria-labelledby="why-heading"] .card');
   if (benefitsCards[0] && json.benefits?.card1) {
     const h = benefitsCards[0].querySelector('h4'); const p = benefitsCards[0].querySelector('p');
