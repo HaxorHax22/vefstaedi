@@ -289,7 +289,7 @@ html { overflow-anchor: none; }
 }
 
 .testimonial-card { 
-  @apply min-w-[320px] md:min-w-[400px] rounded-2xl border border-base-border/50 bg-gradient-to-br from-white to-base-cream/30 shadow-card p-8;
+  @apply min-w-[300px] md:min-w-[380px] rounded-2xl border border-base-border/50 bg-gradient-to-br from-white to-base-cream/30 shadow-card p-6 md:p-7;
   position: relative;
   backdrop-filter: blur(8px);
   transition: all 300ms ease-out;
@@ -301,13 +301,27 @@ html { overflow-anchor: none; }
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
   .testimonial-card {
-    @apply min-w-[280px] p-6; /* Smaller cards on mobile */
+    @apply min-w-[260px] p-4; /* Much slimmer cards on mobile */
     backdrop-filter: none; /* Remove blur on mobile for performance */
     background: linear-gradient(135deg, #ffffff, rgba(204,255,51,0.05)); /* Simpler gradient */
   }
   
   .testimonial-card::before {
-    font-size: 3rem; /* Smaller quote mark on mobile */
+    font-size: 2.5rem; /* Smaller quote mark on mobile */
+    top: 0.5rem;
+    right: 1rem;
+  }
+  
+  .testimonial-header {
+    @apply gap-3 mb-4; /* Tighter spacing on mobile */
+  }
+  
+  .testimonial-quote {
+    @apply text-[16px] leading-relaxed; /* Smaller text on mobile */
+  }
+  
+  .testimonial-logo-img {
+    @apply h-10; /* Smaller logos on mobile */
   }
 }
 
@@ -378,10 +392,10 @@ html { overflow-anchor: none; }
     will-change: transform; /* Optimize for animations */
   }
   
-  /* Even faster on mobile for better performance */
+  /* Much faster on mobile for better performance and engagement */
   @media (max-width: 768px) {
     .testimonials-animate .testimonials-track {
-      animation: testimonialsScroll 12s linear infinite reverse;
+      animation: testimonialsScroll 8s linear infinite reverse;
     }
   }
 }
