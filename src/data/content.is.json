@@ -1,12 +1,12 @@
 {
-  "nav": { "services": "Þjónusta", "pricing": "Verð", "work": "Verkefni", "contact": "Hafðu samband", "faq": "Algengar spurningar" },
+  "nav": { "services": "Þjónusta", "pricing": "Verð", "work": "Verkefni", "contact": "Hafðu samband", "faq": "Algengar spurningar", "about": "Um okkur" },
   "hero": {
     "title": "Betri vefur, betra verð",
     "subtitle": "Við hönnum, hýsum og sjáum um vefinn fyrir þig. Þú borgar aðeins eitt árlegt gjald – allt innifalið (hýsing, lén, uppfærslur og þjónusta).",
-    "primaryAction": "Fáðu tilboð",
+    "primaryAction": "Byrjaðu núna",
     "secondaryAction": "Sjá sýnishorn"
   },
-  "cta": { "title": "Nútímalegur vefur á örfáum dögum.", "button": "Fá verðtilboð" },
+  "cta": { "title": "Nútímalegur vefur á örfáum dögum.", "button": "Byrjaðu núna" },
   "contact": { "title": "Hafðu samband", "submit": "Senda fyrirspurn" },
   "skipLink": "Sleppa á efni",
   "about": {
@@ -66,30 +66,77 @@
       { "author": "Litir og Föndur", "quote": "Falleg hönnun og skýr uppsetning. Þjónustan var hröð og áreiðanleg." }
     ]
   },
+
+  "clients": {
+    "title": "Viðskiptavinir okkar",
+    "subtitle": "Við höfum hjálpað þessum fyrirtækjum að koma sér á netið – smelltu á lógóin til að skoða vefsíður þeirra."
+  },
   "pricing": {
-    "note": "Allar verðtölur í ISK. Vsk. ekki innifalinn. Árleg þjónusta valkvæð.",
-    "card1": { "title": "Grunnpakki", "features": ["1 síða (landing)", "Skráningareyðublað", "Hagræðing fyrir farsíma", "Hýsing á Netlify"] },
-    "card2": { "badge": "Vinsælast", "title": "Vinsælasti pakki", "features": ["Allt úr Grunnpakka", "Allt að 3 síður", "Skráningar + grunn-SEO", "Léttar hreyfingar"] },
-    "card3": { "title": "Sérlausn", "features": ["Sérsniðin virkni", "Fleiri síður og API", "Flóknar hreyfingar", "A/B prófanir"] }
-  },
-  "maintenance": {
-    "title": "Viðhald",
-    "tags": ["Uppfærslur og öryggi", "Afrit og vöktun", "Smáverk og ráðgjöf"],
-    "price": "45.000 kr / ár"
-  },
-  "contactLabels": {
-    "nafn": "Nafn",
-    "fyrirtaeki": "Fyrirtæki",
-    "tolvupostur": "Tölvupóstur",
-    "simanumer": "Símanúmer",
-    "budget": "Áætlað budget",
-    "skilabod": "Skilaboð"
+    "title": "Verð",
+    "subtitle": "Allar síður hannaðar frá grunni – við sjáum um hýsingu, öryggi og uppfærslur.",
+    "monthly": {
+      "title": "Mánaðaráskrift",
+      "price": "7.500 kr./mánuði",
+      "note": "(3 mánaða lágmark)",
+      "features": ["Enginn stofnkostnaður", "Hýsing + öryggi + SSL", "Ótakmarkaðar efnisbreytingar (myndir, texti o.fl.)", "Lénsskráning og endurnýjun innifalin", "Forgangsþjónusta (innan 48 klst.)", "Hönnun frá grunni"],
+      "cta": "Velja áætlun"
+    },
+    "annual": {
+      "title": "Ársáskrift",
+      "price": "70.000 kr./ári",
+      "note": "(~5.800 kr./mánuði)",
+      "features": ["Allt innifalið eins og í öðrum áætlunum", "Árleg yfirferð á hönnun", "Minna vesen, eitt greiðsluskipti á ári", "Hönnun frá grunni"],
+      "cta": "Velja áætlun"
+    },
+    "pro": {
+      "title": "Pro Áskrift",
+      "subtitle": "Fyrir stærri verkefni",
+      "price": "250.000+ kr./ári",
+      "features": ["Flóknari virkni (bókunarkerfi, netverslun, innskráning)", "Sérlausnir/samþættingar (greiðslugáttir, CRM, gagnagrunnar)", "Djúp SEO-greining + árleg skýrsla", "Stefnumótunarfundir og forgangsviðbrögð (innan 24 klst.)", "Hönnun frá grunni"],
+      "cta": "Velja áætlun"
+    },
+    "notes": ["Engar falinn gjöld. Hægt að breyta áætlun síðar.", "Ef þú ert í vafa, veldu ársáskrift – besta verðið og minnsta fyrirhöfn."]
   },
   "faq": [
-    { "q": "Hversu fljótt getið þið skilað?", "a": "Við sýnum demo á 48–72 klst og klárum venjulega innan 5–10 daga, eftir efni og umfangi." },
-    { "q": "Hvernig virkar greiðsla?", "a": "50% við upphaf og 50% við afhendingu. Sérlausnir og viðbætur samþykktar fyrirfram." },
-    { "q": "Get ég uppfært síðuna sjálf/ur?", "a": "Já. Við setjum upp einfalt efnisflæði og leiðbeiningar, eða bjóðum viðhald þar sem við grípum inn." }
+    { "q": "Hvernig virkar greiðsla og hvenær þarf að borga?", "a": "Við tökum við greiðslum í gegnum bankaflutning eða kort. Mánaðaráskrift er greidd fyrirfram í hverjum mánuði, en ársáskrift er greidd í einu lagi við upphaf. Engar faldar aukagjöld." },
+    { "q": "Hvernig byggið þið vefina?", "a": "Það fer eftir þörfum verkefnisins. Fyrir einfaldar síður notum við HTML, CSS, JavaScript og Tailwind fyrir hraða og skilvirkni. Fyrir flóknari virkni eins og innskráningar, greiðslur eða gagnagrunna notum við Next.js og React. Allir vefir eru hannaðir frá grunni með hraða og SEO í huga, hýstir á Netlify með SSL og CDN." },
+    { "q": "Þarf ég að uppfæra vefinn sjálf/ur?", "a": "Nei! Við sjáum um allar uppfærslur fyrir þig — það er innifalið í áskriftinni. Hvort sem um er að ræða efnisbreytingar, myndir, texta eða tæknilegar uppfærslur, þú sendir okkur bara skilaboð og við gríp til aðgerða." },
+    { "q": "Hvað ef ég vil hætta áskriftinni?", "a": "Engin langtímaskuldbinding. Þú getur hætt áskriftinni hvenær sem er með 30 daga fyrirvara. Vefurinn helst í loftinu í 30 daga til viðbótar svo þú hafir tíma til að finna aðra lausn ef þess þarf." }
   ],
+  "faqMeta": {
+    "title": "Algengar spurningar",
+    "subtitle": "Svör við þeim spurningum sem viðskiptavinir okkar spyrja oftast"
+  },
+  "form": {
+    "fields": {
+      "name": "Nafn *",
+      "company": "Fyrirtæki",
+      "email": "Tölvupóstur *",
+      "phone": "Símanúmer *",
+      "message": "Lýsing á verkefni"
+    },
+    "placeholders": {
+      "name": "t.d. Jón Jónsson",
+      "company": "t.d. Mitt fyrirtæki ehf.",
+      "email": "t.d. jon@fyrirtaeki.is",
+      "phone": "t.d. 581-2345",
+      "message": "t.d. Við erum að leita að nýjum vef fyrir okkar fyrirtæki. Við þurfum að sýna okkar þjónustu og hafa samband form. Við viljum að vefurinn sé fljótur og fallegur..."
+    },
+    "submitNote": "Við svörum venjulega innan nokkurra klukkustunda"
+  },
+  "footer": {
+    "company": "Oryx ehf.",
+    "companyId": "Kt. 500100-3970",
+    "tagline": "Nútímalegir vefir fyrir íslensk fyrirtæki",
+    "copyright": "Allur réttur áskilinn.",
+    "navigation": {
+      "title": "Síður"
+    },
+    "services": {
+      "title": "Þjónusta",
+      "items": ["Vefhönnun", "Vefforritun", "Hýsing & viðhald", "SEO & greining"]
+    }
+  },
   "cookies": {
     "message": "Við notum vafrakökur til að bæta upplifun og greina notkun.",
     "allow": "Leyfa kökur",

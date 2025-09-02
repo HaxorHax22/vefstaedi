@@ -1,95 +1,142 @@
 {
-  "nav": { "services": "Services", "pricing": "Pricing", "work": "Work", "contact": "Contact", "faq": "FAQ" },
+  "nav": { "services": "Services", "pricing": "Pricing", "work": "Work", "contact": "Contact", "faq": "FAQ", "about": "About" },
   "hero": {
     "title": "Better website, better price",
-    "subtitle": "Fast delivery, modern design, smooth scroll animations, and smart UX. Bilingual (IS/EN), deployed to Netlify with ongoing care.",
-    "primaryAction": "Book a demo",
+    "subtitle": "We design, host and maintain your website. You pay just one annual fee – everything included (hosting, domain, updates and service).",
+    "primaryAction": "Get Started",
     "secondaryAction": "View work"
   },
-  "cta": { "title": "A modern site in just a few days.", "button": "Get a quote" },
-  "contact": { "title": "Contact us", "submit": "Send request" },
+  "cta": { "title": "A modern website in just a few days.", "button": "Get Started" },
+  "contact": { "title": "Get in touch", "submit": "Send inquiry" },
   "skipLink": "Skip to content",
   "about": {
     "kicker": "Who we are",
     "title": "About us",
-    "p1": "At Vefstæðið we design and build fast, beautiful and high-converting websites.",
-    "p2": "With years of web design and development experience, every page is crafted to be both elegant and practical.",
-    "p3": "We focus on fast delivery, modern design and personal service.",
-    "stat1": "20+ projects delivered",
-    "stat2": "Avg. delivery: 3 days",
-    "stat3": "100% happy clients"
+    "p1": "We are Hannes and Stefán, two partners from Verzlunarskólinn who share a passion for design, entrepreneurship and technology.",
+    "p2": "After working together on numerous projects over recent years, we decided to start Vefstæðið – our first own business – alongside our studies in industrial engineering at Reykjavik University.",
+    "p3": "Our goal is to design professional and fast websites that look good, deliver results and simplify the operations of our clients. Whether you're starting a business or want to take your current website to the next level, we ensure the process is fast, professional and hassle-free.",
+    "stat1": "20+ delivered projects",
+    "stat2": "Average delivery: 3 days",
+    "stat3": "100% satisfied clients"
   },
   "services": {
     "card1": {
-      "title": "Design & Development",
-      "desc": "Fast, beautiful websites with clean code and high performance.",
-      "chips": ["Tailwind", "React", "SEO-friendly"]
+      "title": "Web Design & Development",
+      "desc": "We build fast, beautiful websites without upfront costs.",
+      "chips": ["HTML", "CSS/JS", "SEO-friendly"]
     },
     "card2": {
       "title": "Netlify & Delivery",
-      "desc": "Simple setup flow, SSL, CDN and built-in reliability.",
-      "chips": ["Netlify", "Forms", "Analytics"]
+      "desc": "Secure hosting system with SSL and CDN. We handle setup and delivery so your website is always available.",
+      "chips": ["Hosting", "SSL", "CDN"]
     },
     "card3": {
-      "title": "Care & Hosting",
-      "desc": "Updates, security, backups and support — all in one place.",
-      "chips": ["45,000 ISK/yr", "Support", "Backups"]
+      "title": "Maintenance & Hosting",
+      "desc": "Everything included in one annual fee: hosting, security, backups and content updates.",
+      "chips": ["70,000 ISK/year", "Support", "Backups"]
     }
   },
   "process": {
-    "step1": { "title": "Kickoff call", "desc": "Goals, content and style — 20 min online." },
-    "step2": { "title": "Design + demo", "desc": "First preview delivered in 48–72 hours." },
-    "step3": { "title": "Delivery", "desc": "Approvals, polish, hosting and handover." }
+    "step1": { "title": "Quick meeting", "desc": "Goals and content defined in a 20-minute online meeting." },
+    "step2": { "title": "Design + demo", "desc": "Landing page ready in 48–72 hours for review." },
+    "step3": { "title": "Delivery", "desc": "Final implementation and hosting live — all included in the annual fee." }
   },
   "benefits": {
     "title": "Why Vefstæðið?",
-    "intro": "Fast delivery, modern design and solid execution. We use a modern workflow, clean code and automation to ship a professional site that serves your goals.",
-    "card1": { "title": "Faster execution", "desc": "Demo in a few days with a clear plan and transparency." },
-    "card2": { "title": "Modern stack", "desc": "Tailwind, Netlify and automation for quality and performance." },
-    "card3": { "title": "Long-term partner", "desc": "Care, consulting and updates to keep your site in top shape." }
+    "intro": "Fast delivery, modern design and solid execution. We use modern workflow, clean code and automation to deliver a professional website that serves your goals.",
+    "card1": { "title": "Faster processing", "desc": "Complete demo in a few days with clear overview and transparency in the process." },
+    "card2": { "title": "Modern technology", "desc": "Simple where appropriate: HTML/CSS/JS. We use React/Next when more functionality is needed." },
+    "card3": { "title": "Long-term partnership", "desc": "One simple annual fee — 70,000 ISK/year. We handle maintenance, hosting and changes." }
   },
   "results": {
     "title": "Results",
     "cards": [
       { "caption": "Demo delivered" },
-      { "caption": "Avg. delivery" },
-      { "caption": "Projects shipped" },
-      { "caption": "Happy clients" }
+      { "caption": "Average delivery" },
+      { "caption": "Delivered projects" },
+      { "caption": "Satisfied clients" }
     ],
     "values": ["48–72 hours", "3 days", "2", "100%"]
   },
   "testimonials": {
     "title": "Testimonials",
     "items": [
-      { "author": "Kjölur Byggingafélag", "quote": "Vefstæðið delivered a fast, professional site that fit us perfectly." },
-      { "author": "SÞS", "quote": "Great communication and focused execution — highly recommended." },
-      { "author": "Litir og Föndur", "quote": "Beautiful design and clear structure. Service was fast and reliable." }
+      { "author": "Kjölur Byggingafélag", "quote": "Vefstæðið delivered a fast and professional site that fit us perfectly." },
+      { "author": "SÞS", "quote": "Great communication and focused execution – highly recommend." },
+      { "author": "Litir og Föndur", "quote": "Beautiful design and clear setup. The service was fast and reliable." }
     ]
   },
+
+  "clients": {
+    "title": "Our clients",
+    "subtitle": "We have helped these companies establish their online presence – click on the logos to view their websites."
+  },
   "pricing": {
-    "note": "All prices in ISK. VAT not included. Annual care optional.",
-    "card1": { "title": "Starter", "features": ["1 page (landing)", "Signup form", "Mobile optimization", "Netlify hosting"] },
-    "card2": { "badge": "Popular", "title": "Most popular", "features": ["Everything in Starter", "Up to 3 pages", "Signups + basic SEO", "Light animations"] },
-    "card3": { "title": "Custom", "features": ["Custom features", "More pages and APIs", "Advanced animations", "A/B testing"] }
-  },
-  "maintenance": {
-    "title": "Care",
-    "tags": ["Updates and security", "Backups and monitoring", "Small tasks and consulting"],
-    "price": "45,000 ISK / year"
-  },
-  "contactLabels": {
-    "nafn": "Name",
-    "fyrirtaeki": "Company",
-    "tolvupostur": "Email",
-    "simanumer": "Phone number",
-    "budget": "Estimated budget",
-    "skilabod": "Message"
+    "title": "Pricing",
+    "subtitle": "All sites designed from scratch – we handle hosting, security and updates.",
+    "monthly": {
+      "title": "Monthly Subscription",
+      "price": "7,500 ISK/month",
+      "note": "(3 month minimum)",
+      "features": ["No upfront costs", "Hosting + security + SSL", "Unlimited content changes (images, text, etc.)", "Domain registration and renewal included", "Priority service (within 48 hours)", "Design from scratch"],
+      "cta": "Select plan"
+    },
+    "annual": {
+      "title": "Annual Subscription",
+      "price": "70,000 ISK/year",
+      "note": "(~5,800 ISK/month)",
+      "features": ["Everything included as in other plans", "Annual design review", "Less hassle, one payment per year", "Design from scratch"],
+      "cta": "Select plan"
+    },
+    "pro": {
+      "title": "Pro Subscription",
+      "subtitle": "For larger projects",
+      "price": "250,000+ ISK/year",
+      "features": ["Complex functionality (booking system, e-commerce, login)", "Custom solutions/integrations (payment gateways, CRM, databases)", "Deep SEO analysis + annual report", "Strategy meetings and priority response (within 24 hours)", "Design from scratch"],
+      "cta": "Select plan"
+    },
+    "notes": ["No hidden fees. Can change plan later.", "If in doubt, choose annual subscription – best price and least hassle."]
   },
   "faq": [
-    { "q": "How fast can you deliver?", "a": "We demo in 48–72 hours and usually ship within 5–10 days depending on scope." },
-    { "q": "How do payments work?", "a": "50% to kick off and 50% on delivery. Custom work and add-ons are agreed up front." },
-    { "q": "Can I edit the site myself?", "a": "Yes. We set up a simple content flow and guides, or you can opt for our maintenance plan." }
+    { "q": "How do payments work and when do I need to pay?", "a": "We accept payments via bank transfer or card. Monthly subscription is paid in advance each month, while annual subscription is paid in full at the beginning. No hidden fees." },
+    { "q": "How do you build the websites?", "a": "It depends on the project needs. For simple sites we use HTML, CSS, JavaScript and Tailwind for speed and efficiency. For more complex functionality like logins, payments or databases we use Next.js and React. All websites are designed from scratch with speed and SEO in mind, hosted on Netlify with SSL and CDN." },
+    { "q": "Do I need to update the website myself?", "a": "No! We handle all updates for you — it's included in the subscription. Whether it's content changes, images, text or technical updates, you just send us a message and we take action." },
+    { "q": "What if I want to cancel the subscription?", "a": "No long-term commitment. You can cancel the subscription at any time with 30 days notice. The website stays live for an additional 30 days so you have time to find another solution if needed." }
   ],
+  "faqMeta": {
+    "title": "Frequently asked questions",
+    "subtitle": "Answers to the questions our clients ask most often"
+  },
+  "form": {
+    "fields": {
+      "name": "Name *",
+      "company": "Company",
+      "email": "Email *",
+      "phone": "Phone number *",
+      "message": "Project description"
+    },
+    "placeholders": {
+      "name": "e.g. John Smith",
+      "company": "e.g. My Company Ltd.",
+      "email": "e.g. john@company.com",
+      "phone": "e.g. 581-2345",
+      "message": "e.g. We are looking for a new website for our company. We need to showcase our services and have a contact form. We want the site to be fast and beautiful..."
+    },
+    "submitNote": "We usually respond within a few hours"
+  },
+  "footer": {
+    "company": "Oryx ehf.",
+    "companyId": "ID: 500100-3970",
+    "tagline": "Modern websites for Icelandic businesses",
+    "copyright": "All rights reserved.",
+    "navigation": {
+      "title": "Pages"
+    },
+    "services": {
+      "title": "Services",
+      "items": ["Web design", "Web development", "Hosting & maintenance", "SEO & analytics"]
+    }
+  },
   "cookies": {
     "message": "We use cookies to improve your experience and analyze usage.",
     "allow": "Allow cookies",
@@ -97,5 +144,3 @@
     "manage": "Manage cookies"
   }
 }
-
-

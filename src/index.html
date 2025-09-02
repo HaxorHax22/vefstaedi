@@ -263,9 +263,9 @@
       <section class="section clients-section">
         <div class="container">
           <div class="reveal text-center">
-            <h3 class="clients-heading">Viðskiptavinir okkar</h3>
+            <h3 class="clients-heading" data-i18n="clients.title">Viðskiptavinir okkar</h3>
             <div class="clients-underline" aria-hidden="true"></div>
-            <p class="clients-subtext mt-2">Við höfum hjálpað þessum fyrirtækjum að koma sér á netið – smelltu á lógóin til að skoða vefsíður þeirra.</p>
+            <p class="clients-subtext mt-2" data-i18n="clients.subtitle">Við höfum hjálpað þessum fyrirtækjum að koma sér á netið – smelltu á lógóin til að skoða vefsíður þeirra.</p>
           </div>
         </div>
       </section>
@@ -293,28 +293,29 @@
       
 
       <!-- Benefits / Why us -->
-      <section class="section" aria-labelledby="why-heading">
+      <section class="section why-section" aria-labelledby="why-heading">
         <div class="container">
           <div class="reveal text-center">
             <h3 id="why-heading" class="font-heading text-brand-ink font-extrabold tracking-[-0.02em] text-[26px] md:text-[32px]">Af hverju Vefstæðið?</h3>
+            <p class="why-subtext text-base-text/80 text-[16px] mt-2">Hraði, nútímaleg tækni og samstarf til lengri tíma — einfalt ferli frá hugmynd að vef í loftið.</p>
           </div>
-          <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div class="card reveal">
-              <h4 class="text-[20px] font-semibold text-brand-ink">Hraðari vinnsla</h4>
-              <p>Demo á örfáum dögum með skýru yfirliti og gagnsæi í ferli.</p>
+          <div class="mt-6 benefits-grid grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="card benefit-card reveal">
+              <div class="benefit-title"><span class="benefit-icon" aria-hidden="true"></span><h4 class="text-[20px] font-semibold text-brand-ink">Hraðari vinnsla</h4></div>
+              <p>Fullbúið demo á örfáum dögum með gagnsæju ferli og skýrum fókus.</p>
             </div>
-            <div class="card reveal">
-              <h4 class="text-[20px] font-semibold text-brand-ink">Nútímaleg tækni</h4>
-              <p>Tailwind, Netlify og sjálfvirkni sem tryggir gæði og frammistöðu.</p>
+            <div class="card benefit-card reveal">
+              <div class="benefit-title"><span class="benefit-icon" aria-hidden="true"></span><h4 class="text-[20px] font-semibold text-brand-ink">Nútímaleg tækni</h4></div>
+              <p>Tailwind, Netlify og sjálfvirkni — hraði, gæði og frammistaða út úr kassanum.</p>
             </div>
-            <div class="card reveal">
-              <h4 class="text-[20px] font-semibold text-brand-ink">Langtímasamstarf</h4>
-              <p>Viðhald, ráðgjöf og uppfærslur til að halda vefnum í toppstandi.</p>
+            <div class="card benefit-card reveal">
+              <div class="benefit-title"><span class="benefit-icon" aria-hidden="true"></span><h4 class="text-[20px] font-semibold text-brand-ink">Langtímasamstarf</h4></div>
+              <p>Við sjáum um viðhald, hýsingu og uppfærslur — þú færð ró í hjarta.</p>
             </div>
           </div>
 
           <!-- Moved Process inside Why section -->
-          <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="mt-8 process-grid grid grid-cols-1 md:grid-cols-3 gap-5">
             <div class="process reveal">
               <div class="step-header"><span class="step-badge" aria-hidden="true">1</span><h4>Hraður fundur</h4></div>
               <p>Markmið, efni og stíll — 20 mín á netinu.</p>
@@ -335,7 +336,8 @@
       <section id="faq" class="section" aria-labelledby="faq-heading">
         <div class="container">
           <div class="reveal text-center">
-            <h3 id="faq-heading" class="font-heading text-brand-ink font-extrabold tracking-[-0.02em] text-[26px] md:text-[32px]" data-i18n="faq.title">Algengar spurningar</h3>
+            <h3 id="faq-heading" class="font-heading text-brand-ink font-extrabold tracking-[-0.02em] text-[26px] md:text-[32px]" data-i18n="faqMeta.title">Algengar spurningar</h3>
+            <p class="faq-subtext text-base-text/80 text-[16px] mt-2" data-i18n="faqMeta.subtitle">Svör við þeim spurningum sem viðskiptavinir okkar spyrja oftast</p>
           </div>
           <div id="faq-list" class="accordion mt-6 space-y-3 reveal"></div>
         </div>
@@ -345,30 +347,30 @@
       <section id="verd" class="section" aria-labelledby="pricing-heading">
         <div class="container">
           <div class="reveal text-center">
-            <h2 id="pricing-heading" class="font-heading text-brand-ink font-extrabold tracking-[-0.02em] text-[32px] sm:text-[36px]">Verð</h2>
-            <p class="text-base-text/80 text-[16px] mt-2">Allar síður hannaðar frá grunni – við sjáum um hýsingu, öryggi og uppfærslur.</p>
+            <h2 id="pricing-heading" class="font-heading text-brand-ink font-extrabold tracking-[-0.02em] text-[32px] sm:text-[36px]" data-i18n="pricing.title">Verð</h2>
+            <p class="text-base-text/80 text-[16px] mt-2" data-i18n="pricing.subtitle">Allar síður hannaðar frá grunni – við sjáum um hýsingu, öryggi og uppfærslur.</p>
           </div>
           
           <div class="pricing-grid mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Plan 1 — Mánaðaráskrift (Primary) -->
             <div class="card reveal card--primary">
-              <h3 class="pricing-title">Mánaðaráskrift</h3>
+              <h3 class="pricing-title" data-i18n="pricing.monthly.title">Mánaðaráskrift</h3>
               <div class="pricing-price">
-                <span class="price-main">7.500 kr./mánuði</span>
-                <span class="price-note">(3 mánaða lágmark)</span>
+                <span class="price-main" data-i18n="pricing.monthly.price">7.500 kr./mánuði</span>
+                <span class="price-note" data-i18n="pricing.monthly.note">(3 mánaða lágmark)</span>
               </div>
               <div class="card__body">
                 <ul class="pricing-features">
-                  <li>Enginn stofnkostnaður</li>
-                  <li>Hýsing + öryggi + SSL</li>
-                  <li>Ótakmarkaðar efnisbreytingar (myndir, texti o.fl.)</li>
-                  <li>Lénsskráning og endurnýjun innifalin</li>
-                  <li>Forgangsþjónusta (innan 48 klst.)</li>
-                  <li>Hönnun frá grunni</li>
+                  <li data-i18n="pricing.monthly.features.0">Enginn stofnkostnaður</li>
+                  <li data-i18n="pricing.monthly.features.1">Hýsing + öryggi + SSL</li>
+                  <li data-i18n="pricing.monthly.features.2">Ótakmarkaðar efnisbreytingar (myndir, texti o.fl.)</li>
+                  <li data-i18n="pricing.monthly.features.3">Lénsskráning og endurnýjun innifalin</li>
+                  <li data-i18n="pricing.monthly.features.4">Forgangsþjónusta (innan 48 klst.)</li>
+                  <li data-i18n="pricing.monthly.features.5">Hönnun frá grunni</li>
                 </ul>
               </div>
               <div class="card__cta">
-                <a href="#" data-plan="monthly" class="btn-primary pricing-cta" aria-label="Velja áætlun – Mánaðaráskrift">Velja áætlun</a>
+                <a href="#" data-plan="monthly" class="btn-primary pricing-cta" aria-label="Velja áætlun – Mánaðaráskrift" data-i18n="pricing.monthly.cta">Velja áætlun</a>
               </div>
             </div>
 
@@ -376,48 +378,48 @@
 
             <!-- Plan 3 — Ársáskrift (Secondary highlight) -->
             <div class="card reveal card--featured">
-              <h3 class="pricing-title">Ársáskrift</h3>
+              <h3 class="pricing-title" data-i18n="pricing.annual.title">Ársáskrift</h3>
               <div class="pricing-price">
-                <span class="price-main">70.000 kr./ári</span>
-                <span class="price-note">(~5.800 kr./mánuði)</span>
+                <span class="price-main" data-i18n="pricing.annual.price">70.000 kr./ári</span>
+                <span class="price-note" data-i18n="pricing.annual.note">(~5.800 kr./mánuði)</span>
               </div>
               <div class="card__body">
                 <ul class="pricing-features">
-                  <li>Allt innifalið eins og í öðrum áætlunum</li>
-                  <li>Árleg yfirferð á hönnun</li>
-                  <li>Minna vesen, eitt greiðsluskipti á ári</li>
-                  <li>Hönnun frá grunni</li>
+                  <li data-i18n="pricing.annual.features.0">Allt innifalið eins og í öðrum áætlunum</li>
+                  <li data-i18n="pricing.annual.features.1">Árleg yfirferð á hönnun</li>
+                  <li data-i18n="pricing.annual.features.2">Minna vesen, eitt greiðsluskipti á ári</li>
+                  <li data-i18n="pricing.annual.features.3">Hönnun frá grunni</li>
                 </ul>
               </div>
               <div class="card__cta">
-                <a href="#" data-plan="annual" class="btn-primary pricing-cta" aria-label="Velja áætlun – Ársáskrift">Velja áætlun</a>
+                <a href="#" data-plan="annual" class="btn-primary pricing-cta" aria-label="Velja áætlun – Ársáskrift" data-i18n="pricing.annual.cta">Velja áætlun</a>
               </div>
             </div>
 
             <!-- Plan 4 — Pro Áskrift -->
             <div class="card reveal">
-              <h3 class="pricing-title">Pro Áskrift</h3>
+              <h3 class="pricing-title" data-i18n="pricing.pro.title">Pro Áskrift</h3>
               <div class="pricing-price">
-                <span class="price-main">250.000+ kr./ári</span>
+                <span class="price-main" data-i18n="pricing.pro.price">250.000+ kr./ári</span>
               </div>
               <div class="card__body">
                 <ul class="pricing-features">
-                  <li>Flóknari virkni (bókunarkerfi, netverslun, innskráning)</li>
-                  <li>Sérlausnir/samþættingar (greiðslugáttir, CRM, gagnagrunnar)</li>
-                  <li>Djúp SEO-greining + árleg skýrsla</li>
-                  <li>Stefnumótunarfundir og forgangsviðbrögð (innan 24 klst.)</li>
-                  <li>Hönnun frá grunni</li>
+                  <li data-i18n="pricing.pro.features.0">Flóknari virkni (bókunarkerfi, netverslun, innskráning)</li>
+                  <li data-i18n="pricing.pro.features.1">Sérlausnir/samþættingar (greiðslugáttir, CRM, gagnagrunnar)</li>
+                  <li data-i18n="pricing.pro.features.2">Djúp SEO-greining + árleg skýrsla</li>
+                  <li data-i18n="pricing.pro.features.3">Stefnumótunarfundir og forgangsviðbrögð (innan 24 klst.)</li>
+                  <li data-i18n="pricing.pro.features.4">Hönnun frá grunni</li>
                 </ul>
               </div>
               <div class="card__cta">
-                <a href="#" data-plan="pro" class="btn-primary pricing-cta" aria-label="Velja áætlun – Pro Áskrift">Velja áætlun</a>
+                <a href="#" data-plan="pro" class="btn-primary pricing-cta" aria-label="Velja áætlun – Pro Áskrift" data-i18n="pricing.pro.cta">Velja áætlun</a>
               </div>
             </div>
           </div>
 
           <div class="pricing-notes mt-8 text-center space-y-2 reveal">
-            <p class="text-base-text/70 text-[14px]">Engar falinn gjöld. Hægt að breyta áætlun síðar.</p>
-            <p class="text-base-text/70 text-[14px]">Ef þú ert í vafa, veldu ársáskrift – besta verðið og minnsta fyrirhöfn.</p>
+            <p class="text-base-text/70 text-[14px]" data-i18n="pricing.notes.0">Engin falinn gjöld. Hægt að breyta áætlun síðar.</p>
+            <p class="text-base-text/70 text-[14px]" data-i18n="pricing.notes.1">Ef þú ert í vafa, veldu ársáskrift – besta verðið og minnsta fyrirhöfn.</p>
           </div>
         </div>
       </section>
@@ -438,21 +440,51 @@
         <div class="container">
           <div class="contact-card reveal">
             <h3 data-i18n="contact.title">Hafðu samband</h3>
-            <div class="mt-2 mb-3 flex flex-wrap gap-2">
+            <p class="text-base-text/80 text-[16px] mb-6">Við svörum innan 24 klst. og bjóðum upp á ókeypis ráðgjöf um þitt verkefni.</p>
+            
+            <div class="contact-emails">
               <a href="mailto:hannes@hanneshelgi.com" class="chip">hannes@hanneshelgi.com</a>
               <a href="mailto:stebbidabba@gmail.com" class="chip">stebbidabba@gmail.com</a>
             </div>
+            
             <form name="contact" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" class="form-grid">
               <input type="hidden" name="form-name" value="contact" />
               <input type="hidden" name="plan" id="selectedPlan" value="" />
               <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
-              <label class="field"><span>Nafn</span><input name="nafn" required /></label>
-              <label class="field"><span>Fyrirtæki</span><input name="fyrirtaeki" /></label>
-              <label class="field"><span>Tölvupóstur</span><input type="email" name="tolvupostur" required /></label>
-              <label class="field"><span>Símanúmer</span><input type="tel" name="simanumer" required inputmode="tel" /></label>
-              <label class="field full"><span>Skilaboð</span><textarea name="skilabod" rows="5"></textarea></label>
+              
+              <label class="field">
+                <span data-i18n="form.fields.name">Nafn *</span>
+                <input name="nafn" data-i18n-placeholder="form.placeholders.name" placeholder="t.d. Jón Jónsson" required />
+              </label>
+              
+              <label class="field">
+                <span data-i18n="form.fields.company">Fyrirtæki</span>
+                <input name="fyrirtaeki" data-i18n-placeholder="form.placeholders.company" placeholder="t.d. Mitt fyrirtæki ehf." />
+              </label>
+              
+              <label class="field">
+                <span data-i18n="form.fields.email">Tölvupóstur *</span>
+                <input type="email" name="tolvupostur" data-i18n-placeholder="form.placeholders.email" placeholder="t.d. jon@fyrirtaeki.is" required />
+              </label>
+              
+              <label class="field">
+                <span data-i18n="form.fields.phone">Símanúmer *</span>
+                <input type="tel" name="simanumer" data-i18n-placeholder="form.placeholders.phone" placeholder="t.d. 581-2345" required inputmode="tel" />
+              </label>
+              
+              <label class="field full">
+                <span data-i18n="form.fields.message">Lýsing á verkefni</span>
+                <textarea name="skilabod" data-i18n-placeholder="form.placeholders.message" placeholder="t.d. Við erum að leita að nýjum vef fyrir okkar fyrirtæki. Við þurfum að sýna okkar þjónustu og hafa samband form. Við viljum að vefurinn sé fljótur og fallegur..."></textarea>
+              </label>
+              
               <div class="actions">
-                <button type="submit" class="btn-primary" data-i18n="contact.submit">Senda fyrirspurn</button>
+                <button type="submit" class="btn-primary" data-i18n="contact.submit">
+                  <span>Senda fyrirspurn</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m22 2-7 20-4-9-9-4 20-7z"/>
+                  </svg>
+                </button>
+                <p class="text-[14px] text-base-muted" data-i18n="form.submitNote">Við svörum venjulega innan nokkurra klukkustunda</p>
               </div>
             </form>
           </div>
@@ -464,18 +496,57 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="container footer-inner">
-        <div class="brand-row">
-          <span class="brand-name">Vefstæðið</span>
-          <span class="muted">© <span id="year"></span></span>
+      <div class="container">
+        <div class="footer-content">
+          <!-- Company Info -->
+          <div class="footer-section">
+            <div class="footer-brand">
+              <h3 class="footer-logo">Vefstæðið</h3>
+              <p class="footer-tagline" data-i18n="footer.tagline">Nútímalegir vefir fyrir íslensk fyrirtæki</p>
+            </div>
+            <div class="footer-company-info">
+              <p class="company-name" data-i18n="footer.company">Oryx ehf.</p>
+              <p class="company-details" data-i18n="footer.companyId">Kt. 500100-3970</p>
+              <div class="footer-contact">
+                <a href="mailto:hannes@hanneshelgi.com" class="footer-email">hannes@hanneshelgi.com</a>
+                <a href="mailto:stebbidabba@gmail.com" class="footer-email">stebbidabba@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="footer-section">
+            <h4 class="footer-section-title" data-i18n="footer.navigation.title">Síður</h4>
+            <nav class="footer-nav" aria-label="Fótur">
+              <a href="#um-okkur" data-i18n="nav.about">Um okkur</a>
+              <a href="#verkefni" data-i18n="nav.work">Verkefni</a>
+              <a href="#verd" data-i18n="nav.pricing">Verð</a>
+              <a href="#faq" data-i18n="nav.faq">Algengar spurningar</a>
+              <a href="#hafdu-samband" data-i18n="nav.contact">Hafðu samband</a>
+            </nav>
+          </div>
+
+          <!-- Services -->
+          <div class="footer-section">
+            <h4 class="footer-section-title" data-i18n="footer.services.title">Þjónusta</h4>
+            <ul class="footer-services">
+              <li data-i18n="footer.services.items.0">Vefhönnun</li>
+              <li data-i18n="footer.services.items.1">Vefforritun</li>
+              <li data-i18n="footer.services.items.2">Hýsing & viðhald</li>
+              <li data-i18n="footer.services.items.3">SEO & greining</li>
+            </ul>
+          </div>
         </div>
-        <nav class="footer-nav" aria-label="Fótur">
-          <a href="#thjonusta" data-i18n="nav.services">Þjónusta</a>
-          <a href="#verd" data-i18n="nav.pricing">Verð</a>
-          <a href="#verkefni" data-i18n="nav.work">Verkefni</a>
-          <a href="#hafdu-samband" data-i18n="nav.contact">Hafðu samband</a>
-          <a href="#" id="manageCookiesLink" data-i18n="cookies.manage">Stjórna vafrakökum</a>
-        </nav>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-copyright">
+            <span>© <span id="year"></span> <span data-i18n="footer.company">Oryx ehf.</span> <span data-i18n="footer.copyright">Allur réttur áskilinn.</span></span>
+          </div>
+          <div class="footer-legal">
+            <a href="#" id="manageCookiesLink" data-i18n="cookies.manage">Stjórna vafrakökum</a>
+          </div>
+        </div>
       </div>
     </footer>
 

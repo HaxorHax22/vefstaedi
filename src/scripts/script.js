@@ -233,9 +233,124 @@ window.addEventListener('pageshow', scrollToTopOnLoad);
 // Year in footer
 qs('#year').textContent = new Date().getFullYear();
 
-// Intersection Observer for reveal animations
+// Enhanced GSAP-based reveal animations
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!prefersReduced) {
+
+if (!prefersReduced && typeof gsap !== 'undefined') {
+  // Dramatic text animations for headings
+  const animateText = (element) => {
+    const text = element.textContent;
+    const words = text.split(' ');
+    element.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(' ');
+    
+    gsap.fromTo(element.querySelectorAll('.word'), 
+      { 
+        opacity: 0, 
+        y: 30, 
+        rotationX: -90 
+      }, 
+      { 
+        opacity: 1, 
+        y: 0, 
+        rotationX: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: element,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  };
+
+  // Staggered card reveals with dramatic effects
+  const animateCards = (container) => {
+    const cards = container.querySelectorAll('.card, .process, .pricing-card, .testimonial-card, .benefit-card');
+    
+    cards.forEach((card, index) => {
+      // Different entrance directions for variety
+      const directions = [
+        { x: -100, rotation: -5 },
+        { x: 100, rotation: 5 },
+        { y: 100, rotation: 2 },
+        { x: -80, y: 50, rotation: -3 },
+        { x: 80, y: 50, rotation: 3 }
+      ];
+      
+      const direction = directions[index % directions.length];
+      
+      gsap.fromTo(card, 
+        { 
+          opacity: 0,
+          scale: 0.8,
+          ...direction
+        }, 
+        { 
+          opacity: 1,
+          scale: 1,
+          x: 0,
+          y: 0,
+          rotation: 0,
+          duration: 1.2,
+          delay: index * 0.15,
+          ease: "elastic.out(1, 0.8)",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+  };
+
+  // Apply text animations to main headings
+  qsa('h1, h2, h3').forEach(heading => {
+    if (heading.closest('.hero') || heading.textContent.length < 50) {
+      animateText(heading);
+    }
+  });
+
+  // Apply staggered card animations to sections
+  qsa('.benefits-grid, .process-grid, .pricing-grid, .grid-3').forEach(container => {
+    animateCards(container);
+  });
+
+  // Special hero subtitle animation
+  const heroSubtitle = qs('.hero .subtitle');
+  if (heroSubtitle) {
+    gsap.fromTo(heroSubtitle, 
+      { 
+        opacity: 0, 
+        y: 50, 
+        filter: "blur(10px)" 
+      }, 
+      { 
+        opacity: 1, 
+        y: 0, 
+        filter: "blur(0px)",
+        duration: 1.5,
+        delay: 0.8,
+        ease: "power3.out"
+      }
+    );
+  }
+
+  // Fallback intersection observer for elements without GSAP animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14 });
+  
+  qsa('.reveal:not(.card):not(.process):not(.pricing-card), .reveal-fade').forEach((el) => observer.observe(el));
+} else {
+  // Fallback for reduced motion or no GSAP
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -245,8 +360,6 @@ if (!prefersReduced) {
     });
   }, { threshold: 0.14 });
   qsa('.reveal, .reveal-fade').forEach((el) => observer.observe(el));
-} else {
-  qsa('.reveal, .reveal-fade').forEach((el) => el.classList.add('in-view'));
 }
 
 // Mobile menu with focus trap
@@ -736,8 +849,11 @@ function initHeroImageRotation() {
     setTimeout(() => {
       currentIndex = (currentIndex + 1) % imageSets.length;
       applySet(currentIndex);
-      heroPhone.style.opacity = '1';
-      heroLaptop.style.opacity = '1';
+      // Use requestAnimationFrame to ensure both images update in the same frame
+      requestAnimationFrame(() => {
+        heroPhone.style.opacity = '1';
+        heroLaptop.style.opacity = '1';
+      });
     }, 250);
   };
   
