@@ -141,6 +141,29 @@ html { overflow-anchor: none; }
 /* Trustbar */
 .trustbar .logos { @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 items-center; }
 .trustbar .logo { @apply flex items-center justify-center; }
+.trustbar .logo img { background: transparent; mix-blend-mode: multiply; }
+
+/* Pricing */
+.pricing-grid { @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6; }
+/* Generic card pattern for pricing */
+.card { @apply rounded-xl border border-base-border bg-white shadow-card p-6 relative flex flex-col; will-change: transform; transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 300ms ease, border-color 300ms ease; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(20,20,20,0.08), 0 8px 16px rgba(20,20,20,0.06); border-color: rgba(204,255,51,0.3); }
+@media (prefers-reduced-motion: reduce) { .card { transition: none; will-change: auto; } .card:hover { transform: none; } }
+.card--featured { @apply border-brand-lime bg-gradient-to-b from-white to-brand-lime/5; transform: scale(1.02); }
+.card--featured:hover { transform: scale(1.02) translateY(-4px); }
+.card--primary { @apply border-brand-ink/20; box-shadow: 0 20px 40px rgba(20,20,20,0.08), 0 8px 16px rgba(20,20,20,0.06); }
+.card__badge { @apply absolute -top-3 left-1/2 transform -translate-x-1/2 bg-brand-lime text-brand-ink text-[12px] font-bold px-3 py-1 rounded-pill; }
+.card__body { @apply mb-6; flex: 1; }
+.card__cta { @apply mt-auto; }
+.pricing-title { @apply text-[20px] font-bold text-brand-ink mb-3; }
+.pricing-price { @apply mb-6; }
+.price-main { @apply block text-[24px] font-extrabold text-brand-ink; }
+.price-note { @apply block text-[14px] text-base-text/70 mt-1; }
+.pricing-features { @apply space-y-3 mb-0; }
+.pricing-features li { @apply flex items-start gap-2 text-[14px] text-base-text; }
+.pricing-features li::before { content: "✓"; @apply text-brand-lime font-bold flex-shrink-0 mt-0.5; }
+.pricing-cta { @apply w-full justify-center; }
+.pricing-notes { @apply mt-8 text-center space-y-2; }
 
 /* Testimonials */
 .testimonials-wrap { overflow: hidden; }
@@ -173,6 +196,25 @@ html { overflow-anchor: none; }
 /* Card accent bar */
 .card { position: relative; }
 .card .accent { display: none; }
+
+/* Hover interactions for cards (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+  .card, .process, .pricing-card, .testimonial-card, .result-card, .contact-card {
+    transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 300ms ease, border-color 300ms ease, background-color 300ms ease, filter 300ms ease;
+    will-change: transform;
+  }
+  .card:hover, .process:hover, .pricing-card:hover, .testimonial-card:hover, .result-card:hover, .contact-card:hover {
+    transform: translateY(-20px) scale(1.12) rotate(2deg);
+    box-shadow: var(--shadow-floating);
+    border-color: var(--color-base-border);
+    background-color: var(--color-base-card);
+    filter: saturate(1.15) brightness(1.05) contrast(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .process, .pricing-card, .testimonial-card, .result-card, .contact-card { transition: none; }
+}
 
 
 /* About card kicker spacing on small screens */
@@ -221,6 +263,13 @@ html { overflow-anchor: none; }
 .footer-nav a { @apply hover:underline; }
 .footer-nav a[href="#verd"] { display: none; }
 
+/* Cookie banner */
+.cookie-banner { position: fixed; inset-inline: 0; bottom: 16px; display: grid; place-items: center; z-index: 60; }
+.cookie-banner[hidden] { display: none !important; }
+.cookie-inner { @apply mx-4 max-w-[780px] w-[min(100%,780px)] rounded-xl border border-base-border bg-white shadow-card p-4 md:p-5 flex flex-col md:flex-row items-center justify-between gap-4; }
+.cookie-text { @apply text-[14px] md:text-[15px] text-base-text; }
+.cookie-actions { @apply flex items-center gap-3; }
+
 /* Animations */
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-fade { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -235,6 +284,8 @@ section[aria-labelledby="why-heading"] .reveal,
 #nidurstodur .reveal { opacity: 1 !important; transform: none !important; }
 /* Services fallback */
 #thjonusta .reveal { opacity: 1 !important; transform: none !important; }
+/* Pricing fallback */
+#verd .reveal { opacity: 1 !important; transform: none !important; }
 
 /* About stats: ensure text wraps and sizes down slightly to avoid overflow */
 .about-stats .about-stat-card { @apply rounded-xl border border-base-border bg-white shadow-soft p-4; }

@@ -8,6 +8,35 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const qs = (s, r = document) => r.querySelector(s);
 const qsa = (s, r = document) => Array.from(r.querySelectorAll(s));
 
+// Cookies consent logic
+// Initialize cookie banner after DOM is ready
+const initCookies = () => {
+  const KEY = 'vefstaedi.cookies';
+  let accepted = false;
+  try { accepted = localStorage.getItem(KEY) === 'accepted'; } catch {}
+  const banner = qs('#cookie-consent');
+  const allow = qs('#cookieAllow');
+  const decline = qs('#cookieDecline');
+  if (!banner || !allow || !decline) return;
+  if (!accepted) banner.hidden = false;
+  allow.addEventListener('click', (e) => {
+    e.preventDefault();
+    try { localStorage.setItem(KEY, 'accepted'); } catch {}
+    banner.hidden = true;
+  });
+  decline.addEventListener('click', (e) => {
+    e.preventDefault();
+    try { localStorage.setItem(KEY, 'denied'); } catch {}
+    banner.hidden = true;
+  });
+};
+
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  initCookies();
+} else {
+  window.addEventListener('DOMContentLoaded', initCookies, { once: true });
+}
+
 // Force page to start at top on refresh (respect deep links)
 try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch {}
 if (!location.hash) {
@@ -18,6 +47,16 @@ if (!location.hash) {
   }
 }
 window.addEventListener('beforeunload', () => { try { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); } catch {} });
+
+// Allow opening the cookie banner again from footer link (delegated)
+window.addEventListener('click', (e) => {
+  const t = e.target;
+  if (t && t.closest && t.closest('#manageCookiesLink')) {
+    e.preventDefault();
+    const banner = qs('#cookie-consent');
+    if (banner) banner.hidden = false;
+  }
+});
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!reduce) {
@@ -67,17 +106,61 @@ if (!reduce) {
     btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.3 }));
   });
 
-  // Section card reveals (services, benefits, results)
-  gsap.utils.toArray('.card, .result-card').forEach((el) => {
+  // Magnetic cards - follow cursor with 3D tilt effect
+  qsa('.card, .process, .pricing-card, .result-card, .contact-card').forEach((card) => {
+    const strength = 35;
+    const rotateStrength = 15;
+    const scaleStrength = 0.08;
+    
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const relX = e.clientX - rect.left - rect.width / 2;
+      const relY = e.clientY - rect.top - rect.height / 2;
+      
+      // Calculate normalized positions (-1 to 1)
+      const normX = relX / (rect.width / 2);
+      const normY = relY / (rect.height / 2);
+      
+      // Apply magnetic movement, 3D rotation, and dynamic scale
+      gsap.to(card, {
+        x: normX * strength,
+        y: normY * strength,
+        rotateY: normX * rotateStrength,
+        rotateX: -normY * rotateStrength,
+        scale: 1 + (Math.abs(normX) + Math.abs(normY)) * scaleStrength,
+        duration: 0.2,
+        ease: 'power2.out'
+      });
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      gsap.to(card, {
+        x: 0,
+        y: 0,
+        rotateY: 0,
+        rotateX: 0,
+        scale: 1,
+        duration: 0.5,
+        ease: 'power2.out'
+      });
+    });
+  });
+
+  // Section card reveals (services, benefits, results) - more dramatic slide-ins
+  // Exclude testimonial cards to avoid conflict with marquee animation
+  gsap.utils.toArray('.card, .result-card, .pricing-card, .process').forEach((el, idx) => {
+    const fromLeft = idx % 2 === 0;
     gsap.from(el, {
-      y: 24,
+      x: fromLeft ? -60 : 60,
+      y: 30,
       opacity: 0,
-      scale: 0.98,
-      duration: 0.6,
-      ease: 'power2.out',
+      scale: 0.94,
+      duration: 0.9,
+      ease: 'power3.out',
       scrollTrigger: {
         trigger: el,
-        start: 'top 80%',
+        start: 'top 85%',
+        once: true
       }
     });
   });
@@ -270,6 +353,16 @@ async function loadContent(nextLang) {
   // CTA banner
   qsa('[data-i18n="cta.button"]').forEach((e) => (e.textContent = json.cta.button));
   qsa('.cta-title').forEach((e) => { if (json.cta?.title) e.textContent = json.cta.title; });
+
+  // Cookie banner text
+  try {
+    const cookieText = qs('#cookieText');
+    const allowBtn = qs('#cookieAllow');
+    const denyBtn = qs('#cookieDecline');
+    if (cookieText && json.cookies?.message) cookieText.textContent = json.cookies.message;
+    if (allowBtn && json.cookies?.allow) allowBtn.textContent = json.cookies.allow;
+    if (denyBtn && json.cookies?.deny) denyBtn.textContent = json.cookies.deny;
+  } catch {}
 
   // Contact
   qsa('[data-i18n="contact.title"]').forEach((e) => (e.textContent = json.contact.title));
@@ -521,7 +614,7 @@ async function loadContent(nextLang) {
 
   // Safety: ensure reveal sections are visible even if an observer/animation fails
   try {
-    qsa('section[aria-labelledby="why-heading"] .card, #nidurstodur .result-card').forEach((el) => {
+    qsa('section[aria-labelledby="why-heading"] .card, #nidurstodur .result-card, #tilmaeli .testimonial-card').forEach((el) => {
       el.classList.add('in-view');
     });
   } catch {}
@@ -541,6 +634,48 @@ qs('#langToggle')?.addEventListener('click', () => {
 qs('#langToggleMobile')?.addEventListener('click', () => {
   toggleLangHandler();
 });
+
+// Pricing plan prefill functionality
+function initPricingPrefill() {
+  // Extract plan from URL hash/query
+  const urlParams = new URLSearchParams(window.location.search);
+  const hashParams = new URLSearchParams(window.location.hash.split('?')[1] || '');
+  const plan = urlParams.get('plan') || hashParams.get('plan');
+  
+  if (plan) {
+    const planField = qs('#selectedPlan');
+    if (planField) {
+      planField.value = plan;
+    }
+  }
+
+  // Add click handlers to pricing buttons
+  qsa('.pricing-cta').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const href = btn.getAttribute('href') || '';
+      const match = href.match(/plan=(\w+)/);
+      const planType = match ? match[1] : '';
+      
+      // Analytics tracking
+      try {
+        if (window.plausible && planType) {
+          window.plausible('pricing_cta', { props: { plan: planType } });
+        }
+      } catch {}
+      
+      // Prefill form
+      setTimeout(() => {
+        const planField = qs('#selectedPlan');
+        if (planField && planType) {
+          planField.value = planType;
+        }
+      }, 100);
+    });
+  });
+}
+
+// Initialize on load
+initPricingPrefill();
  
 
   // Testimonials (Vitnisburðir)

@@ -1,10 +1,10 @@
 {
   "nav": { "services": "Þjónusta", "pricing": "Verð", "work": "Verkefni", "contact": "Hafðu samband", "faq": "Algengar spurningar" },
   "hero": {
-    "title": "Betri vefur. Betra verð.",
-    "subtitle": "Hágæða vefsíður á hagstæðu verði – afhentar fljótt, með faglegri hönnun og tilbúnar til að selja.",
-    "primaryAction": "Bóka kynningu",
-    "secondaryAction": "Sjá verk"
+    "title": "Betri vefur, betra verð",
+    "subtitle": "Við hönnum, hýsum og sjáum um vefinn fyrir þig. Þú borgar aðeins eitt árlegt gjald – allt innifalið (hýsing, lén, uppfærslur og þjónusta).",
+    "primaryAction": "Fáðu tilboð",
+    "secondaryAction": "Sjá sýnishorn"
   },
   "cta": { "title": "Nútímalegur vefur á örfáum dögum.", "button": "Fá verðtilboð" },
   "contact": { "title": "Hafðu samband", "submit": "Senda fyrirspurn" },
@@ -22,31 +22,31 @@
   "services": {
     "card1": {
       "title": "Vefhönnun & Forritun",
-      "desc": "Hraðvirkir, fallegir vefir með hreinu kerfi og mikilli afköstun.",
-      "chips": ["Tailwind", "React", "SEO-friendly"]
+      "desc": "Við byggjum hraðvirka, fallega vefi án stofnkostnaðar.",
+      "chips": ["HTML", "CSS/JS", "SEO-friendly"]
     },
     "card2": {
       "title": "Netlify & Afgreiðsla",
-      "desc": "Einfallt uppsetningarflæði, SSL, CDN og stöðugleiki innbyggður.",
-      "chips": ["Netlify", "Forms", "Analytics"]
+      "desc": "Öruggt hýsingarkerfi með SSL og CDN. Við sjáum um uppsetningu og afgreiðslu þannig að vefurinn sé alltaf til staðar.",
+      "chips": ["Hosting", "SSL", "CDN"]
     },
     "card3": {
       "title": "Viðhald & Hýsing",
-      "desc": "Uppfærslur, öryggi, afrit og aðstoð — allt á einum stað.",
-      "chips": ["45.000 kr/ár", "Support", "Backups"]
+      "desc": "Allt innifalið í einu árlegu gjaldi: hýsing, öryggi, afrit og efnisuppfærslur.",
+      "chips": ["70.000 kr/ári", "Support", "Backups"]
     }
   },
   "process": {
-    "step1": { "title": "Hraður fundur", "desc": "Markmið, efni og stíll — 20 mín á netinu." },
-    "step2": { "title": "Hönnun + demo", "desc": "Fáanlegt kynningarsíða innan 48–72 klst." },
-    "step3": { "title": "Afgreiðsla", "desc": "Samþykktir, smáatriði, hýsing og afhending." }
+    "step1": { "title": "Hraður fundur", "desc": "Markmið og efni skilgreind á 20 mínútna netfundi." },
+    "step2": { "title": "Hönnun + demo", "desc": "Kynningarsíða tilbúin á 48–72 klst. til yfirferðar." },
+    "step3": { "title": "Afgreiðsla", "desc": "Lokaútfærsla og hýsing í loftið — allt innifalið í ársgjaldinu." }
   },
   "benefits": {
     "title": "Af hverju Vefstæðið?",
     "intro": "Hraðvirk afhending, nútímaleg hönnun og vönduð framkvæmd. Við notum nútímalegt verkflæði, hreinan kóða og sjálfvirkni til að skila faglegum vef sem þjónar markmiðum þínum.",
-    "card1": { "title": "Hraðari vinnsla", "desc": "Demo á örfáum dögum með skýru yfirliti og gagnsæi í ferli." },
-    "card2": { "title": "Nútímaleg tækni", "desc": "Tailwind, Netlify og sjálfvirkni sem tryggir gæði og frammistöðu." },
-    "card3": { "title": "Langtímasamstarf", "desc": "Viðhald, ráðgjöf og uppfærslur til að halda vefnum í toppstandi." }
+    "card1": { "title": "Hraðari vinnsla", "desc": "Fullbúin kynningarsíða á örfáum dögum — hraðar en hefðbundnar lausnir." },
+    "card2": { "title": "Nútímaleg tækni", "desc": "Einfalt þar sem það á við: HTML/CSS/JS. Nýtum React/Next þegar þarf meiri virkni." },
+    "card3": { "title": "Langtímasamstarf", "desc": "Eitt einfalt árlegt gjald — 70.000 kr./ári. Við sjáum um viðhald, hýsingu og breytingar." }
   },
   "results": {
     "title": "Niðurstöður",
@@ -89,7 +89,13 @@
     { "q": "Hversu fljótt getið þið skilað?", "a": "Við sýnum demo á 48–72 klst og klárum venjulega innan 5–10 daga, eftir efni og umfangi." },
     { "q": "Hvernig virkar greiðsla?", "a": "50% við upphaf og 50% við afhendingu. Sérlausnir og viðbætur samþykktar fyrirfram." },
     { "q": "Get ég uppfært síðuna sjálf/ur?", "a": "Já. Við setjum upp einfalt efnisflæði og leiðbeiningar, eða bjóðum viðhald þar sem við grípum inn." }
-  ]
+  ],
+  "cookies": {
+    "message": "Við notum vafrakökur til að bæta upplifun og greina notkun.",
+    "allow": "Leyfa kökur",
+    "deny": "Ekki leyfa",
+    "manage": "Stjórna vafrakökum"
+  }
 }
 
 

@@ -1,7 +1,7 @@
 {
   "nav": { "services": "Services", "pricing": "Pricing", "work": "Work", "contact": "Contact", "faq": "FAQ" },
   "hero": {
-    "title": "We build websites that convert.",
+    "title": "Better website, better price",
     "subtitle": "Fast delivery, modern design, smooth scroll animations, and smart UX. Bilingual (IS/EN), deployed to Netlify with ongoing care.",
     "primaryAction": "Book a demo",
     "secondaryAction": "View work"
@@ -89,7 +89,13 @@
     { "q": "How fast can you deliver?", "a": "We demo in 48–72 hours and usually ship within 5–10 days depending on scope." },
     { "q": "How do payments work?", "a": "50% to kick off and 50% on delivery. Custom work and add-ons are agreed up front." },
     { "q": "Can I edit the site myself?", "a": "Yes. We set up a simple content flow and guides, or you can opt for our maintenance plan." }
-  ]
+  ],
+  "cookies": {
+    "message": "We use cookies to improve your experience and analyze usage.",
+    "allow": "Allow cookies",
+    "deny": "Do not allow",
+    "manage": "Manage cookies"
+  }
 }
 
 

@@ -63,7 +63,7 @@
             <a href="#hero" class="brand" aria-label="Vefstæðið">Vefstæðið</a>
             <ul class="menu desktop" role="menubar">
               <li role="none"><a role="menuitem" href="#thjonusta" data-i18n="nav.services">Þjónusta</a></li>
-              
+              <li role="none"><a role="menuitem" href="#verd" data-i18n="nav.pricing">Verð</a></li>
               <li role="none"><a role="menuitem" href="#verkefni" data-i18n="nav.work">Verkefni</a></li>
               <li role="none"><a role="menuitem" href="#hafdu-samband" data-i18n="nav.contact">Hafðu samband</a></li>
               <li role="none"><a role="menuitem" href="#faq" data-i18n="nav.faq">Algengar spurningar</a></li>
@@ -95,7 +95,7 @@
             </div>
             <ul class="mobile-list" role="menu">
               <li role="none"><a role="menuitem" href="#thjonusta" data-i18n="nav.services">Þjónusta</a></li>
-              
+              <li role="none"><a role="menuitem" href="#verd" data-i18n="nav.pricing">Verð</a></li>
               <li role="none"><a role="menuitem" href="#verkefni" data-i18n="nav.work">Verkefni</a></li>
               <li role="none"><a role="menuitem" href="#hafdu-samband" data-i18n="nav.contact">Hafðu samband</a></li>
               <li role="none"><a role="menuitem" href="#faq" data-i18n="nav.faq">Algengar spurningar</a></li>
@@ -110,10 +110,11 @@
       <section id="hero" class="section hero">
         <div class="container">
           <div class="reveal text-center">
-            <h1 class="display" data-i18n="hero.title">Betri vefur. Betra verð.</h1>
-            <p class="subtitle mx-auto" data-i18n="hero.subtitle">Hágæða vefsíður á hagstæðu verði – afhentar fljótt, með faglegri hönnun og tilbúnar til að selja.</p>
+            <h1 class="display" data-i18n="hero.title">Nútímalegur vefur án stofnkostnaðar – einfalt árlegt gjald.</h1>
+            <p class="subtitle mx-auto" data-i18n="hero.subtitle">Við hönnum, hýsum og sjáum um vefinn fyrir þig. Þú borgar aðeins eitt árlegt gjald – allt innifalið (hýsing, lén, uppfærslur og þjónusta).</p>
             <div class="cta-row justify-center">
-              <a href="#hafdu-samband" class="btn-primary" data-i18n="hero.primaryAction">Bóka kynningu</a>
+              <a href="#hafdu-samband" class="btn-primary" data-i18n="hero.primaryAction">Fáðu tilboð</a>
+              <a href="#verkefni" class="btn-outline" data-i18n="hero.secondaryAction">Sjá sýnishorn</a>
             </div>
             <div class="hero-media-grid grid grid-cols-1 lg:grid-cols-2 gap-8 items-center justify-items-center justify-center mt-6 sm:mt-8 mb-6 sm:mb-8 mx-auto">
               <div class="hero-device-wrap">
@@ -294,8 +295,12 @@
           <a class="logo" href="https://s-s-wine.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Sjá verkefni: SÞS">
             <img src="/assets/img/clients/s-s_copy.png" alt="SÞS" class="max-h-24 md:max-h-28 lg:max-h-32 h-auto w-auto object-contain" loading="lazy" decoding="async" />
           </a>
-          <div class="logo">Litir og Föndur</div>
-          <div class="logo">Ósk n Art</div>
+          <a class="logo" href="https://reform-iceland.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Sjá verkefni: Reform Iceland">
+            <img src="/assets/img/clients/reform_logo.png" alt="Reform Iceland" class="max-h-24 md:max-h-28 lg:max-h-32 h-auto w-auto object-contain" loading="lazy" decoding="async" />
+          </a>
+          <a class="logo" href="https://tomas-nine.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Sjá verkefni: Tómas Darri">
+            <img src="/assets/img/clients/tomasdarri.png" alt="Tómas Darri" class="max-h-24 md:max-h-28 lg:max-h-32 h-auto w-auto object-contain" loading="lazy" decoding="async" />
+          </a>
         </div>
       </section>
 
@@ -383,7 +388,86 @@
         </div>
       </section>
 
-      
+      <!-- Pricing -->
+      <section id="verd" class="section" aria-labelledby="pricing-heading">
+        <div class="container">
+          <div class="reveal text-center">
+            <h2 id="pricing-heading" class="font-heading text-brand-ink font-extrabold tracking-[-0.02em] text-[32px] sm:text-[36px]">Verð</h2>
+            <p class="text-base-text/80 text-[16px] mt-2">Allar síður hannaðar frá grunni – við sjáum um hýsingu, öryggi og uppfærslur.</p>
+          </div>
+          
+          <div class="pricing-grid mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Plan 1 — Mánaðaráskrift (Primary) -->
+            <div class="card reveal card--primary">
+              <h3 class="pricing-title">Mánaðaráskrift</h3>
+              <div class="pricing-price">
+                <span class="price-main">7.500 kr./mánuði</span>
+                <span class="price-note">(3 mánaða lágmark)</span>
+              </div>
+              <div class="card__body">
+                <ul class="pricing-features">
+                  <li>Enginn stofnkostnaður</li>
+                  <li>Hýsing + öryggi + SSL</li>
+                  <li>Ótakmarkaðar efnisbreytingar (myndir, texti o.fl.)</li>
+                  <li>Lénsskráning og endurnýjun innifalin</li>
+                  <li>Forgangsþjónusta (innan 48 klst.)</li>
+                  <li>Hönnun frá grunni</li>
+                </ul>
+              </div>
+              <div class="card__cta">
+                <a href="#samband?plan=monthly" class="btn-primary pricing-cta" aria-label="Velja áætlun – Mánaðaráskrift">Velja áætlun</a>
+              </div>
+            </div>
+
+
+
+            <!-- Plan 3 — Ársáskrift (Secondary highlight) -->
+            <div class="card reveal card--featured">
+              <h3 class="pricing-title">Ársáskrift</h3>
+              <div class="pricing-price">
+                <span class="price-main">70.000 kr./ári</span>
+                <span class="price-note">(~5.800 kr./mánuði)</span>
+              </div>
+              <div class="card__body">
+                <ul class="pricing-features">
+                  <li>Allt innifalið eins og í öðrum áætlunum</li>
+                  <li>Árleg yfirferð á hönnun</li>
+                  <li>Minna vesen, eitt greiðsluskipti á ári</li>
+                  <li>Hönnun frá grunni</li>
+                </ul>
+              </div>
+              <div class="card__cta">
+                <a href="#samband?plan=annual" class="btn-primary pricing-cta" aria-label="Velja áætlun – Ársáskrift">Velja áætlun</a>
+              </div>
+            </div>
+
+            <!-- Plan 4 — Pro Áskrift -->
+            <div class="card reveal">
+              <h3 class="pricing-title">Pro Áskrift</h3>
+              <div class="pricing-price">
+                <span class="price-main">250.000+ kr./ári</span>
+              </div>
+              <div class="card__body">
+                <ul class="pricing-features">
+                  <li>Flóknari virkni (bókunarkerfi, netverslun, innskráning)</li>
+                  <li>Sérlausnir/samþættingar (greiðslugáttir, CRM, gagnagrunnar)</li>
+                  <li>Djúp SEO-greining + árleg skýrsla</li>
+                  <li>Stefnumótunarfundir og forgangsviðbrögð (innan 24 klst.)</li>
+                  <li>Hönnun frá grunni</li>
+                </ul>
+              </div>
+              <div class="card__cta">
+                <a href="#samband?plan=pro" class="btn-primary pricing-cta" aria-label="Velja áætlun – Pro Áskrift">Velja áætlun</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pricing-notes mt-8 text-center space-y-2 reveal">
+            <p class="text-base-text/70 text-[14px]">Engar falinn gjöld. Hægt að breyta áætlun síðar.</p>
+            <p class="text-base-text/70 text-[14px]">Ef þú ert í vafa, veldu ársáskrift – besta verðið og minnsta fyrirhöfn.</p>
+          </div>
+        </div>
+      </section>
 
       <!-- CTA Banner -->
       <section id="cta" class="section">
@@ -396,6 +480,7 @@
       </section>
 
       <!-- Contact -->
+      <div id="samband" class="sr-only" aria-hidden="true"></div>
       <section id="hafdu-samband" class="section">
         <div class="container">
           <div class="contact-card reveal">
@@ -406,7 +491,8 @@
             </div>
             <form name="contact" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" class="form-grid">
               <input type="hidden" name="form-name" value="contact" />
-              <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+              <input type="hidden" name="plan" id="selectedPlan" value="" />
+              <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
               <label class="field"><span>Nafn</span><input name="nafn" required /></label>
               <label class="field"><span>Fyrirtæki</span><input name="fyrirtaeki" /></label>
               <label class="field"><span>Tölvupóstur</span><input type="email" name="tolvupostur" required /></label>
@@ -447,11 +533,24 @@
           <a href="#verd" data-i18n="nav.pricing">Verð</a>
           <a href="#verkefni" data-i18n="nav.work">Verkefni</a>
           <a href="#hafdu-samband" data-i18n="nav.contact">Hafðu samband</a>
+          <a href="#" id="manageCookiesLink" data-i18n="cookies.manage">Stjórna vafrakökum</a>
         </nav>
       </div>
     </footer>
 
     <!-- JS -->
+    
+    <!-- Cookies consent -->
+    <div id="cookie-consent" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookies" hidden>
+      <div class="cookie-inner">
+        <p id="cookieText" class="cookie-text" data-i18n="cookies.message">We use cookies to improve your experience and analyze usage.</p>
+        <div class="cookie-actions">
+          <button id="cookieDecline" class="btn-outline" type="button" data-i18n="cookies.deny">Do not allow</button>
+          <button id="cookieAllow" class="btn-primary" type="button" data-i18n="cookies.allow">Allow cookies</button>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="/scripts/script.js"></script>
   </body>
 </html>
