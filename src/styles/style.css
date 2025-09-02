@@ -264,22 +264,128 @@ html { overflow-anchor: none; }
 .pricing-cta { @apply w-full justify-center; }
 .pricing-notes { @apply mt-8 text-center space-y-2; }
 
-/* Testimonials */
-.testimonials-wrap { overflow: hidden; }
-.testimonials-track { display: flex; gap: 16px; }
-.testimonial-card { @apply min-w-[280px] md:min-w-[360px] rounded-xl border border-base-border bg-white shadow-soft p-6; }
-.testimonial-header { @apply flex items-center gap-3 mb-3; }
-.testimonial-logo-img { @apply h-8 md:h-10 w-auto object-contain; }
-.testimonial-logo-fallback { @apply w-9 h-9 rounded-md border border-base-border bg-base-cream flex items-center justify-center text-[12px] font-semibold text-brand-ink; }
-.testimonial-meta { @apply flex flex-col; }
-.testimonial-author { @apply text-[14px] font-semibold text-brand-ink; }
-.testimonial-stars { color: #F59E0B; @apply flex items-center gap-1; }
-.testimonial-quote { @apply text-[16px] md:text-[18px] text-base-text leading-relaxed; }
-@media (prefers-reduced-motion: no-preference) {
-  .testimonials-animate .testimonials-track {
-    animation: testimonialsScroll 24s linear infinite reverse; /* slide to the right */
+/* Enhanced Testimonials with Cycling Animation */
+.testimonials-wrap { 
+  overflow: hidden; 
+  position: relative;
+  padding: 1.5rem 0;
+  margin: 0 -1rem;
+  /* Performance optimizations */
+  contain: layout style paint; /* CSS containment for better performance */
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  .testimonials-wrap {
+    padding: 1rem 0; /* Reduce padding on mobile */
   }
 }
+
+.testimonials-track { 
+  display: flex; 
+  gap: 24px;
+  padding: 0 2rem;
+}
+
+.testimonial-card { 
+  @apply min-w-[320px] md:min-w-[400px] rounded-2xl border border-base-border/50 bg-gradient-to-br from-white to-base-cream/30 shadow-card p-8;
+  position: relative;
+  backdrop-filter: blur(8px);
+  transition: all 300ms ease-out;
+  /* Mobile performance optimizations */
+  transform: translateZ(0); /* Force hardware acceleration */
+  will-change: transform; /* Optimize for transforms */
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  .testimonial-card {
+    @apply min-w-[280px] p-6; /* Smaller cards on mobile */
+    backdrop-filter: none; /* Remove blur on mobile for performance */
+    background: linear-gradient(135deg, #ffffff, rgba(204,255,51,0.05)); /* Simpler gradient */
+  }
+  
+  .testimonial-card::before {
+    font-size: 3rem; /* Smaller quote mark on mobile */
+  }
+}
+
+/* Large decorative quote mark */
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 4rem;
+  font-family: Georgia, serif;
+  color: rgba(204,255,51,0.15);
+  line-height: 1;
+  pointer-events: none;
+  transition: all 200ms ease-out;
+}
+
+.testimonial-header { 
+  @apply flex items-center gap-4 mb-6;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-logo-img { 
+  @apply h-12 md:h-14 w-auto object-contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  transition: transform 200ms ease-out;
+}
+
+.testimonial-logo-fallback { 
+  @apply w-12 h-12 rounded-xl border border-base-border bg-gradient-to-br from-base-cream to-white flex items-center justify-center text-[14px] font-bold text-brand-ink shadow-sm;
+  transition: transform 200ms ease-out;
+}
+
+.testimonial-meta { 
+  @apply flex flex-col gap-1;
+}
+
+.testimonial-author { 
+  @apply text-[17px] font-bold text-brand-ink;
+  letter-spacing: -0.01em;
+}
+
+.testimonial-stars { 
+  color: #F59E0B; 
+  @apply flex items-center gap-1 mt-1;
+  filter: drop-shadow(0 1px 2px rgba(245,158,11,0.3));
+}
+
+.testimonial-stars svg {
+  transition: transform 150ms ease-out;
+  width: 16px;
+  height: 16px;
+}
+
+.testimonial-quote { 
+  @apply text-[18px] md:text-[20px] text-base-text leading-relaxed font-medium;
+  position: relative;
+  z-index: 2;
+  font-style: italic;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+/* Mobile-optimized testimonials animation */
+@media (prefers-reduced-motion: no-preference) {
+  .testimonials-animate .testimonials-track {
+    animation: testimonialsScroll 16s linear infinite reverse; /* Faster for better mobile experience */
+    will-change: transform; /* Optimize for animations */
+  }
+  
+  /* Even faster on mobile for better performance */
+  @media (max-width: 768px) {
+    .testimonials-animate .testimonials-track {
+      animation: testimonialsScroll 12s linear infinite reverse;
+    }
+  }
+}
+
 @keyframes testimonialsScroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -342,9 +448,45 @@ html { overflow-anchor: none; }
   }
   
   .testimonial-card:hover, .result-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.1), 0 4px 8px rgba(204,255,51,0.15);
-    border-color: rgba(204,255,51,0.3);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.12), 0 6px 12px rgba(204,255,51,0.2);
+    border-color: rgba(204,255,51,0.4);
+    background: linear-gradient(135deg, #ffffff, rgba(204,255,51,0.08));
+  }
+
+  .testimonial-card:hover .testimonial-logo-img,
+  .testimonial-card:hover .testimonial-logo-fallback {
+    transform: scale(1.1);
+  }
+
+  .testimonial-card:hover .testimonial-stars svg {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .testimonial-card:hover::before {
+    color: rgba(204,255,51,0.25);
+    transform: scale(1.1);
+  }
+  
+  /* Reduce hover effects on mobile for performance */
+  @media (max-width: 768px) {
+    .testimonial-card:hover {
+      transform: translateY(-4px); /* Less intensive transform on mobile */
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    }
+    
+    .testimonial-card:hover .testimonial-logo-img,
+    .testimonial-card:hover .testimonial-logo-fallback {
+      transform: none; /* Disable logo scaling on mobile */
+    }
+    
+    .testimonial-card:hover .testimonial-stars svg {
+      transform: none; /* Disable star animations on mobile */
+    }
+    
+    .testimonial-card:hover::before {
+      transform: none; /* Disable quote mark scaling on mobile */
+    }
   }
   
   /* Activate glow on hover */

@@ -60,13 +60,23 @@
   },
   "testimonials": {
     "title": "Testimonials",
+    "subtitle": "What our clients say about working with us",
     "items": [
       { "author": "Kjölur Byggingafélag", "quote": "Vefstæðið delivered a fast and professional site that fit us perfectly." },
       { "author": "SÞS", "quote": "Great communication and focused execution – highly recommend." },
       { "author": "Litir og Föndur", "quote": "Beautiful design and clear setup. The service was fast and reliable." }
     ]
   },
-
+  "faq": [
+    { "q": "How do payments work and when do I need to pay?", "a": "We accept payments via bank transfer or card. Monthly subscription is paid in advance each month, while annual subscription is paid in full at the beginning. No hidden fees." },
+    { "q": "How do you build the websites?", "a": "It depends on the project needs. For simple sites we use HTML, CSS, JavaScript and Tailwind for speed and efficiency. For more complex functionality like logins, payments or databases we use Next.js and React. All websites are designed from scratch with speed and SEO in mind, hosted on Netlify with SSL and CDN." },
+    { "q": "Do I need to update the website myself?", "a": "No! We handle all updates for you — it's included in the subscription. Whether it's content changes, images, text or technical updates, you just send us a message and we take action." },
+    { "q": "What if I want to cancel the subscription?", "a": "No long-term commitment. You can cancel the subscription at any time with 30 days notice. The website stays live for an additional 30 days so you have time to find another solution if needed." }
+  ],
+  "faqMeta": {
+    "title": "Frequently asked questions",
+    "subtitle": "Answers to the questions our clients ask most often"
+  },
   "clients": {
     "title": "Our clients",
     "subtitle": "We have helped these companies establish their online presence – click on the logos to view their websites."
@@ -96,16 +106,6 @@
       "cta": "Select plan"
     },
     "notes": ["No hidden fees. Can change plan later.", "If in doubt, choose annual subscription – best price and least hassle."]
-  },
-  "faq": [
-    { "q": "How do payments work and when do I need to pay?", "a": "We accept payments via bank transfer or card. Monthly subscription is paid in advance each month, while annual subscription is paid in full at the beginning. No hidden fees." },
-    { "q": "How do you build the websites?", "a": "It depends on the project needs. For simple sites we use HTML, CSS, JavaScript and Tailwind for speed and efficiency. For more complex functionality like logins, payments or databases we use Next.js and React. All websites are designed from scratch with speed and SEO in mind, hosted on Netlify with SSL and CDN." },
-    { "q": "Do I need to update the website myself?", "a": "No! We handle all updates for you — it's included in the subscription. Whether it's content changes, images, text or technical updates, you just send us a message and we take action." },
-    { "q": "What if I want to cancel the subscription?", "a": "No long-term commitment. You can cancel the subscription at any time with 30 days notice. The website stays live for an additional 30 days so you have time to find another solution if needed." }
-  ],
-  "faqMeta": {
-    "title": "Frequently asked questions",
-    "subtitle": "Answers to the questions our clients ask most often"
   },
   "form": {
     "fields": {

@@ -60,13 +60,23 @@
   },
   "testimonials": {
     "title": "Vitnisburðir",
+    "subtitle": "Hvað segja fyrirtækin sem við höfum unnið með",
     "items": [
       { "author": "Kjölur Byggingafélag", "quote": "Vefstæðið skilaði hraðri og faglegri síðu sem passaði okkur fullkomlega." },
       { "author": "SÞS", "quote": "Frábær samskipti og hnitmiðuð framkvæmd – mælum eindregið með." },
       { "author": "Litir og Föndur", "quote": "Falleg hönnun og skýr uppsetning. Þjónustan var hröð og áreiðanleg." }
     ]
   },
-
+  "faq": [
+    { "q": "Hvernig virkar greiðsla og hvenær þarf að borga?", "a": "Við tökum við greiðslum í gegnum bankaflutning eða kort. Mánaðaráskrift er greidd fyrirfram í hverjum mánuði, en ársáskrift er greidd í einu lagi við upphaf. Engar faldar aukagjöld." },
+    { "q": "Hvernig byggið þið vefina?", "a": "Það fer eftir þörfum verkefnisins. Fyrir einfaldar síður notum við HTML, CSS, JavaScript og Tailwind fyrir hraða og skilvirkni. Fyrir flóknari virkni eins og innskráningar, greiðslur eða gagnagrunna notum við Next.js og React. Allir vefir eru hannaðir frá grunni með hraða og SEO í huga, hýstir á Netlify með SSL og CDN." },
+    { "q": "Þarf ég að uppfæra vefinn sjálf/ur?", "a": "Nei! Við sjáum um allar uppfærslur fyrir þig — það er innifalið í áskriftinni. Hvort sem um er að ræða efnisbreytingar, myndir, texta eða tæknilegar uppfærslur, þú sendir okkur bara skilaboð og við gríp til aðgerða." },
+    { "q": "Hvað ef ég vil hætta áskriftinni?", "a": "Engin langtímaskuldbinding. Þú getur hætt áskriftinni hvenær sem er með 30 daga fyrirvara. Vefurinn helst í loftinu í 30 daga til viðbótar svo þú hafir tíma til að finna aðra lausn ef þess þarf." }
+  ],
+  "faqMeta": {
+    "title": "Algengar spurningar",
+    "subtitle": "Svör við þeim spurningum sem viðskiptavinir okkar spyrja oftast"
+  },
   "clients": {
     "title": "Viðskiptavinir okkar",
     "subtitle": "Við höfum hjálpað þessum fyrirtækjum að koma sér á netið – smelltu á lógóin til að skoða vefsíður þeirra."
@@ -96,16 +106,6 @@
       "cta": "Velja áætlun"
     },
     "notes": ["Engar falinn gjöld. Hægt að breyta áætlun síðar.", "Ef þú ert í vafa, veldu ársáskrift – besta verðið og minnsta fyrirhöfn."]
-  },
-  "faq": [
-    { "q": "Hvernig virkar greiðsla og hvenær þarf að borga?", "a": "Við tökum við greiðslum í gegnum bankaflutning eða kort. Mánaðaráskrift er greidd fyrirfram í hverjum mánuði, en ársáskrift er greidd í einu lagi við upphaf. Engar faldar aukagjöld." },
-    { "q": "Hvernig byggið þið vefina?", "a": "Það fer eftir þörfum verkefnisins. Fyrir einfaldar síður notum við HTML, CSS, JavaScript og Tailwind fyrir hraða og skilvirkni. Fyrir flóknari virkni eins og innskráningar, greiðslur eða gagnagrunna notum við Next.js og React. Allir vefir eru hannaðir frá grunni með hraða og SEO í huga, hýstir á Netlify með SSL og CDN." },
-    { "q": "Þarf ég að uppfæra vefinn sjálf/ur?", "a": "Nei! Við sjáum um allar uppfærslur fyrir þig — það er innifalið í áskriftinni. Hvort sem um er að ræða efnisbreytingar, myndir, texta eða tæknilegar uppfærslur, þú sendir okkur bara skilaboð og við gríp til aðgerða." },
-    { "q": "Hvað ef ég vil hætta áskriftinni?", "a": "Engin langtímaskuldbinding. Þú getur hætt áskriftinni hvenær sem er með 30 daga fyrirvara. Vefurinn helst í loftinu í 30 daga til viðbótar svo þú hafir tíma til að finna aðra lausn ef þess þarf." }
-  ],
-  "faqMeta": {
-    "title": "Algengar spurningar",
-    "subtitle": "Svör við þeim spurningum sem viðskiptavinir okkar spyrja oftast"
   },
   "form": {
     "fields": {
@@ -144,5 +144,3 @@
     "manage": "Stjórna vafrakökum"
   }
 }
-
-
