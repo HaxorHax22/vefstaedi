@@ -118,10 +118,10 @@
             </div>
             <div class="hero-media-grid grid grid-cols-1 lg:grid-cols-2 gap-8 items-center justify-items-center justify-center mt-6 sm:mt-8 mb-6 sm:mb-8 mx-auto">
               <div class="hero-device-wrap">
-                <img src="/assets/img/hero/phone/iphone_s-s.png" alt="Sýnatæki í símaskjá" class="hero-device hero-float w-full max-w-[80px] sm:max-w-[100px] md:max-w-[120px] lg:max-w-[140px] xl:max-w-[160px] h-auto" decoding="async" />
+                <img id="hero-phone" src="/assets/img/hero/phone/new_s-s_phone.png" alt="Sýnatæki í símaskjá" class="hero-device hero-float w-full max-w-[80px] sm:max-w-[100px] md:max-w-[120px] lg:max-w-[140px] xl:max-w-[160px] h-auto" decoding="async" />
               </div>
               <div class="laptop-image hero-float" aria-label="Vefstæðið í fartölvu">
-                <img src="/assets/img/hero/laptop/laptop-s-s.png" alt="Skjámynd í fartölvu" class="hero-laptop w-full h-auto" decoding="async" />
+                <img id="hero-laptop" src="/assets/img/hero/laptop/laptop-s-s.png" alt="Skjámynd í fartölvu" class="hero-laptop w-full h-auto" decoding="async" />
               </div>
             </div>
           </div>
@@ -259,40 +259,24 @@
 
       
 
-      <!-- Results / Niðurstöður -->
-      <section id="nidurstodur" class="section" aria-labelledby="results-heading">
+      <!-- Client Section Header -->
+      <section class="section clients-section">
         <div class="container">
           <div class="reveal text-center">
-            <h3 id="results-heading" class="font-heading text-brand-ink font-extrabold tracking-[-0.02em] text-[26px] md:text-[32px]">Niðurstöður</h3>
-          </div>
-          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-            <div class="result-card reveal">
-              <div class="result-value">48–72 klst</div>
-              <div class="result-caption">Demo afhent</div>
-            </div>
-            <div class="result-card reveal">
-              <div class="result-value">3 dagar</div>
-              <div class="result-caption">Meðalafhending</div>
-            </div>
-            <div class="result-card reveal">
-              <div class="result-value">2</div>
-              <div class="result-caption">Afhent verkefni</div>
-            </div>
-            <div class="result-card reveal">
-              <div class="result-value">100%</div>
-              <div class="result-caption">Ánægðir viðskiptavinir</div>
-            </div>
+            <h3 class="clients-heading">Viðskiptavinir okkar</h3>
+            <div class="clients-underline" aria-hidden="true"></div>
+            <p class="clients-subtext mt-2">Við höfum hjálpað þessum fyrirtækjum að koma sér á netið – smelltu á lógóin til að skoða vefsíður þeirra.</p>
           </div>
         </div>
       </section>
 
-      <!-- Projects / Trustbar placed between Results and Services -->
-      <section id="verkefni" class="trustbar py-10 md:py-14 scroll-mt-24" aria-label="Viðskiptavinir">
+      <!-- Projects / Trustbar -->
+      <section id="verkefni" class="trustbar py-6 md:py-8 scroll-mt-24 mt-5" aria-label="Viðskiptavinir">
         <div class="container logos reveal-fade">
           <a class="logo" href="https://kjolurbygg.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Sjá verkefni: Kjölur Byggingafélag">
             <img src="/assets/img/clients/kb_logo_copy.png" alt="Kjölur Byggingafélag" class="max-h-24 md:max-h-28 lg:max-h-32 h-auto w-auto object-contain" loading="lazy" decoding="async" />
           </a>
-          <a class="logo" href="https://s-s-wine.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Sjá verkefni: SÞS">
+          <a class="logo" href="https://tresmidi.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Sjá verkefni: SÞS">
             <img src="/assets/img/clients/s-s_copy.png" alt="SÞS" class="max-h-24 md:max-h-28 lg:max-h-32 h-auto w-auto object-contain" loading="lazy" decoding="async" />
           </a>
           <a class="logo" href="https://reform-iceland.netlify.app" target="_blank" rel="noopener noreferrer" aria-label="Sjá verkefni: Reform Iceland">
@@ -304,38 +288,7 @@
         </div>
       </section>
 
-      <!-- Services -->
-      <section id="thjonusta" class="section">
-        <div class="container grid-3 services">
-          <article class="card reveal">
-            <h3>Vefhönnun & Forritun</h3>
-            <p>Hraðvirkir, fallegir vefir með hreinu kerfi og mikilli afköstun.</p>
-            <div class="chips">
-              <span class="chip">Tailwind</span>
-              <span class="chip">React</span>
-              <span class="chip">SEO-friendly</span>
-            </div>
-          </article>
-          <article class="card reveal">
-            <h3>Netlify & Afgreiðsla</h3>
-            <p>Einfallt uppsetningarflæði, SSL, CDN og stöðugleiki innbyggður.</p>
-            <div class="chips">
-              <span class="chip">Netlify</span>
-              <span class="chip">Forms</span>
-              <span class="chip">Analytics</span>
-            </div>
-          </article>
-          <article class="card reveal">
-            <h3>Viðhald & Hýsing</h3>
-            <p>Uppfærslur, öryggi, afrit og aðstoð — allt á einum stað.</p>
-            <div class="chips">
-              <span class="chip">45.000 kr/ár</span>
-              <span class="chip">Support</span>
-              <span class="chip">Backups</span>
-            </div>
-          </article>
-        </div>
-      </section>
+
 
       
 
@@ -415,7 +368,7 @@
                 </ul>
               </div>
               <div class="card__cta">
-                <a href="#samband?plan=monthly" class="btn-primary pricing-cta" aria-label="Velja áætlun – Mánaðaráskrift">Velja áætlun</a>
+                <a href="#" data-plan="monthly" class="btn-primary pricing-cta" aria-label="Velja áætlun – Mánaðaráskrift">Velja áætlun</a>
               </div>
             </div>
 
@@ -437,7 +390,7 @@
                 </ul>
               </div>
               <div class="card__cta">
-                <a href="#samband?plan=annual" class="btn-primary pricing-cta" aria-label="Velja áætlun – Ársáskrift">Velja áætlun</a>
+                <a href="#" data-plan="annual" class="btn-primary pricing-cta" aria-label="Velja áætlun – Ársáskrift">Velja áætlun</a>
               </div>
             </div>
 
@@ -457,7 +410,7 @@
                 </ul>
               </div>
               <div class="card__cta">
-                <a href="#samband?plan=pro" class="btn-primary pricing-cta" aria-label="Velja áætlun – Pro Áskrift">Velja áætlun</a>
+                <a href="#" data-plan="pro" class="btn-primary pricing-cta" aria-label="Velja áætlun – Pro Áskrift">Velja áætlun</a>
               </div>
             </div>
           </div>
@@ -497,18 +450,6 @@
               <label class="field"><span>Fyrirtæki</span><input name="fyrirtaeki" /></label>
               <label class="field"><span>Tölvupóstur</span><input type="email" name="tolvupostur" required /></label>
               <label class="field"><span>Símanúmer</span><input type="tel" name="simanumer" required inputmode="tel" /></label>
-              <label class="field full"><span>Áætlað budget</span>
-                <select name="budget" required>
-                  <option value="" disabled selected>Veldu verð</option>
-                  <option>100.000 kr</option>
-                  <option>150.000 kr</option>
-                  <option>200.000 kr</option>
-                  <option>250.000 kr</option>
-                  <option>300.000 kr</option>
-                  <option>350.000 kr</option>
-                  <option>400.000 kr</option>
-                </select>
-              </label>
               <label class="field full"><span>Skilaboð</span><textarea name="skilabod" rows="5"></textarea></label>
               <div class="actions">
                 <button type="submit" class="btn-primary" data-i18n="contact.submit">Senda fyrirspurn</button>

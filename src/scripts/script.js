@@ -46,7 +46,7 @@ if (!location.hash) {
     window.addEventListener('DOMContentLoaded', () => window.scrollTo(0, 0), { once: true });
   }
 }
-window.addEventListener('beforeunload', () => { try { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); } catch {} });
+// Removed scroll-to-top on beforeunload to avoid jump when triggering mailto links
 
 // Allow opening the cookie banner again from footer link (delegated)
 window.addEventListener('click', (e) => {
@@ -652,9 +652,9 @@ function initPricingPrefill() {
   // Add click handlers to pricing buttons
   qsa('.pricing-cta').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      const href = btn.getAttribute('href') || '';
-      const match = href.match(/plan=(\w+)/);
-      const planType = match ? match[1] : '';
+      e.preventDefault();
+      // Prefer data-plan attribute for email template
+      const planType = btn.getAttribute('data-plan') || '';
       
       // Analytics tracking
       try {
@@ -663,13 +663,14 @@ function initPricingPrefill() {
         }
       } catch {}
       
-      // Prefill form
-      setTimeout(() => {
-        const planField = qs('#selectedPlan');
-        if (planField && planType) {
-          planField.value = planType;
-        }
-      }, 100);
+      // Build mailto
+      const to = ['hannes@hanneshelgi.com','stebbidabba@gmail.com'].join(',');
+      const planNames = { monthly: 'Mánaðaráskrift', annual: 'Ársáskrift', pro: 'Pro Áskrift' };
+      const subject = encodeURIComponent(`Fyrirspurn – ${planNames[planType] || 'Áætlun'}`);
+      const body = encodeURIComponent(
+        `Sælir\n\nMig langar að velja: ${planNames[planType] || planType}\n\nUpplýsingar:\n- Nafn: \n- Fyrirtæki: \n- Sími: \n\nStutt lýsing á þörfum: \n\nKveðja,\n`
+      );
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
     });
   });
 }
@@ -677,6 +678,81 @@ function initPricingPrefill() {
 // Initialize on load
 initPricingPrefill();
  
+// Projects: highlight selected client card via hash/query (?client=slug)
+function initProjectFocus() {
+  try {
+    const hashParams = new URLSearchParams(window.location.hash.split('?')[1] || '');
+    const client = hashParams.get('client');
+    if (!client) return;
+    const target = document.querySelector(`[data-client="${client}"]`);
+    if (!target) return;
+    // Scroll into view and highlight briefly
+    target.classList.add('highlight');
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => target.classList.remove('highlight'), 2200);
+  } catch {}
+}
+
+initProjectFocus();
+
+// Hero image rotation
+function initHeroImageRotation() {
+  const heroPhone = qs('#hero-phone');
+  const heroLaptop = qs('#hero-laptop');
+  
+  if (!heroPhone || !heroLaptop) return;
+  
+  const imageSets = [
+    {
+      phone: '/assets/img/hero/phone/new_s-s_phone.png',
+      laptop: '/assets/img/hero/laptop/laptop-s-s.png',
+      alt: 'SÞS verkefni'
+    },
+    {
+      phone: '/assets/img/hero/phone/new_KB_phone.png',
+      laptop: '/assets/img/hero/laptop/laptop-kb.png',
+      alt: 'Kjölur Byggingafélag verkefni'
+    },
+    {
+      phone: '/assets/img/hero/phone/TD_phone.app.png',
+      laptop: '/assets/img/hero/laptop/TD_mac.png',
+      alt: 'Tómas Darri verkefni'
+    }
+  ];
+  
+  let currentIndex = 0;
+  const applySet = (idx) => {
+    const s = imageSets[idx];
+    heroPhone.src = s.phone;
+    heroLaptop.src = s.laptop;
+    heroPhone.alt = `${s.alt} í símaskjá`;
+    heroLaptop.alt = `${s.alt} í fartölvu`;
+  };
+
+  const next = () => {
+    // Fade out, switch, fade in
+    heroPhone.style.opacity = '0.3';
+    heroLaptop.style.opacity = '0.3';
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % imageSets.length;
+      applySet(currentIndex);
+      heroPhone.style.opacity = '1';
+      heroLaptop.style.opacity = '1';
+    }, 250);
+  };
+  
+  // Add smooth transitions
+  heroPhone.style.transition = 'opacity 300ms ease';
+  heroLaptop.style.transition = 'opacity 300ms ease';
+  
+  // Apply the first different set shortly after load so we don't repeat the initial set
+  setTimeout(next, 1200);
+  // Continue rotation
+  setInterval(next, 4500);
+}
+
+// Initialize hero rotation
+initHeroImageRotation();
 
   // Testimonials (Vitnisburðir)
   try {
@@ -697,45 +773,6 @@ initPricingPrefill();
 // Initial content load
 loadContent(lang);
 
-// Hero crossfade rotation for phone and laptop
-(() => {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const phoneImg = qs('.hero-device-wrap img');
-  const laptopImg = qs('.laptop-image img');
-  if (!phoneImg || !laptopImg) return;
-
-  const phoneSources = [
-    '/assets/img/hero/phone/iphone_s-s.png',
-    '/assets/img/hero/phone/kb_iphone.png',
-  ];
-  const laptopSources = [
-    '/assets/img/hero/laptop/laptop-s-s.png',
-    '/assets/img/hero/laptop/laptop-kb.png',
-  ];
-
-  let index = 0;
-  const duration = 0.6;
-  const delay = 6;
-
-  function swap(img, nextSrc) {
-    if (reduceMotion) {
-      img.src = nextSrc;
-      return;
-    }
-    gsap.to(img, { opacity: 0, duration, ease: 'power2.out', onComplete: () => {
-      img.src = nextSrc;
-      gsap.to(img, { opacity: 1, duration, ease: 'power2.out' });
-    }});
-  }
-
-  // Preload images
-  [...phoneSources, ...laptopSources].forEach((src) => { const i = new Image(); i.src = src; });
-
-  setInterval(() => {
-    index = (index + 1) % phoneSources.length;
-    swap(phoneImg, phoneSources[index]);
-    swap(laptopImg, laptopSources[index]);
-  }, delay * 1000);
-})();
+// (Removed legacy hero crossfade rotation that used old images)
 
 

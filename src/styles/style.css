@@ -143,6 +143,21 @@ html { overflow-anchor: none; }
 .trustbar .logo { @apply flex items-center justify-center; }
 .trustbar .logo img { background: transparent; mix-blend-mode: multiply; }
 
+/* Clients section header */
+.clients-section { padding-block: clamp(2rem, 4vw, 4rem); }
+.clients-heading { @apply font-heading text-brand-ink font-extrabold; font-weight: 900; letter-spacing: 0.01em; font-size: clamp(28px, 4.2vw, 38px); }
+.clients-underline { width: 56px; height: 4px; border-radius: 999px; background-color: var(--color-brand-lime, #CCFF33); margin: 8px auto 0 auto; }
+.clients-subtext { @apply text-base-text/80; max-width: 620px; margin-left: auto; margin-right: auto; line-height: 1.4; }
+
+/* Projects grid */
+.projects-grid { @apply grid grid-cols-1 md:grid-cols-2 gap-6; }
+.project-card .project-header { @apply mb-4 flex items-center justify-center; }
+.project-logo { @apply h-12 md:h-14 w-auto object-contain; }
+.project-blurb { @apply text-base-text text-[15px] md:text-[16px]; }
+.project-chips { @apply mt-3 flex flex-wrap gap-2; }
+.project-chips li { @apply inline-flex items-center rounded-pill border border-base-border bg-white px-3 py-1 text-[13px]; }
+.project-card.highlight { outline: 3px solid rgba(204,255,51,0.6); outline-offset: 2px; border-color: rgba(204,255,51,0.6); }
+
 /* Pricing */
 .pricing-grid { @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6; }
 /* Generic card pattern for pricing */
@@ -286,6 +301,8 @@ section[aria-labelledby="why-heading"] .reveal,
 #thjonusta .reveal { opacity: 1 !important; transform: none !important; }
 /* Pricing fallback */
 #verd .reveal { opacity: 1 !important; transform: none !important; }
+/* Projects fallback */
+#verkefni-detalur .reveal { opacity: 1 !important; transform: none !important; }
 
 /* About stats: ensure text wraps and sizes down slightly to avoid overflow */
 .about-stats .about-stat-card { @apply rounded-xl border border-base-border bg-white shadow-soft p-4; }
