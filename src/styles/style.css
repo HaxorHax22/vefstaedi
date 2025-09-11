@@ -712,17 +712,14 @@ html { overflow-anchor: none; }
 }
 
 .footer-services {
-  @apply space-y-2;
+  @apply space-y-2 list-none;
 }
 
 .footer-services li {
-  @apply text-[14px] text-base-text/80 relative pl-4;
+  @apply text-[14px] text-base-text/80;
 }
 
-.footer-services li::before {
-  content: '•';
-  @apply absolute left-0 text-brand-lime font-bold;
-}
+.footer-services li::before { content: none; }
 
 /* Footer Bottom */
 .footer-bottom {
