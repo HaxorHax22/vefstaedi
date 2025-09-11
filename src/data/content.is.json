@@ -7,7 +7,7 @@
     "secondaryAction": "Sjá sýnishorn"
   },
   "cta": { "title": "Nútímalegur vefur á örfáum dögum.", "button": "Byrjaðu núna" },
-  "contact": { "title": "Hafðu samband", "submit": "Senda fyrirspurn" },
+  "contact": { "title": "Hafðu samband", "intro": "Við svörum innan 24 klst. og bjóðum upp á ókeypis ráðgjöf um þitt verkefni.", "submit": "Senda fyrirspurn" },
   "skipLink": "Sleppa á efni",
   "about": {
     "kicker": "Hver erum við",

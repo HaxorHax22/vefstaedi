@@ -7,7 +7,7 @@
     "secondaryAction": "View work"
   },
   "cta": { "title": "A modern website in just a few days.", "button": "Get Started" },
-  "contact": { "title": "Get in touch", "submit": "Send inquiry" },
+  "contact": { "title": "Get in touch", "intro": "We respond within 24 hours and offer free advice on your project.", "submit": "Send inquiry" },
   "skipLink": "Skip to content",
   "about": {
     "kicker": "Who we are",
