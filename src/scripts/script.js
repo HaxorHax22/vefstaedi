@@ -804,10 +804,17 @@ function initPricingPrefill() {
       
       // Build mailto
       const to = ['hannes@hanneshelgi.com','stebbidabba@gmail.com'].join(',');
-      const planNames = { monthly: 'Mánaðaráskrift', annual: 'Ársáskrift', pro: 'Pro Áskrift' };
-      const subject = encodeURIComponent(`Fyrirspurn – ${planNames[planType] || 'Áætlun'}`);
+      const isEn = (typeof lang === 'string' ? lang : document.documentElement.lang) === 'en';
+      const planNames = isEn
+        ? { monthly: 'Monthly Subscription', annual: 'Annual Subscription', pro: 'Pro Subscription' }
+        : { monthly: 'Mánaðaráskrift', annual: 'Ársáskrift', pro: 'Pro Áskrift' };
+      const subject = encodeURIComponent(
+        isEn ? `Inquiry – ${planNames[planType] || 'Plan'}` : `Fyrirspurn – ${planNames[planType] || 'Áætlun'}`
+      );
       const body = encodeURIComponent(
-        `Sælir\n\nMig langar að velja: ${planNames[planType] || planType}\n\nUpplýsingar:\n- Nafn: \n- Fyrirtæki: \n- Sími: \n\nStutt lýsing á þörfum: \n\nKveðja,\n`
+        isEn
+          ? `Hello\n\nI would like to choose: ${planNames[planType] || planType}\n\nDetails:\n- Name: \n- Company: \n- Phone: \n\nShort description of needs: \n\nBest regards,\n`
+          : `Sælir\n\nMig langar að velja: ${planNames[planType] || planType}\n\nUpplýsingar:\n- Nafn: \n- Fyrirtæki: \n- Sími: \n\nStutt lýsing á þörfum: \n\nKveðja,\n`
       );
       window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
     });
