@@ -443,6 +443,32 @@ async function loadContent(nextLang) {
   }
   const json = await res.json();
 
+  // Generic i18n binder: fill any element with data-i18n / data-i18n-placeholder
+  // This guarantees new sections (clients, pricing, FAQ headings, footer, etc.) translate without bespoke JS.
+  const getByPath = (obj, path) => {
+    try {
+      return path.split('.').reduce((acc, key) => (acc != null ? acc[key] : undefined), obj);
+    } catch {
+      return undefined;
+    }
+  };
+  try {
+    qsa('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (!key) return;
+      const val = getByPath(json, key);
+      if (val !== undefined && val !== null && typeof val !== 'object') {
+        el.textContent = String(val);
+      }
+    });
+    qsa('[data-i18n-placeholder]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (!key) return;
+      const val = getByPath(json, key);
+      if (typeof val === 'string') el.setAttribute('placeholder', val);
+    });
+  } catch {}
+
   // Hero
   const hero = json.hero;
   const heroTitle = qs('[data-i18n="hero.title"]');
