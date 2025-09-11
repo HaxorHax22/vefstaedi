@@ -1,7 +1,7 @@
 {
   "nav": { "services": "Services", "pricing": "Pricing", "work": "Work", "contact": "Contact", "faq": "FAQ", "about": "About" },
   "hero": {
-    "title": "Better website, better price",
+    "title": "Better site, better price",
     "subtitle": "We design, host and maintain your website. You pay just one annual fee – everything included (hosting, domain, updates and service).",
     "primaryAction": "Get Started",
     "secondaryAction": "View work"
