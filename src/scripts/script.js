@@ -854,8 +854,8 @@ function initHeroImageRotation() {
 
   const imageSets = [
     {
-      phone: `/assets/img/hero/phone/new_s-s_phone.png${bust}`,
-      laptop: `/assets/img/hero/laptop/laptop-s-s.png${bust}`,
+      phone: `/assets/img/hero/phone/new_s-s_phone.png${bust || '?v=2'}`,
+      laptop: `/assets/img/hero/laptop/laptop-s-s.png${bust || '?v=2'}`,
       alt: 'SÞS verkefni'
     },
     {
