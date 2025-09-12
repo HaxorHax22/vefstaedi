@@ -803,7 +803,7 @@ function initPricingPrefill() {
       } catch {}
       
       // Build mailto
-      const to = ['hannes@hanneshelgi.com','stebbidabba@gmail.com'].join(',');
+      const to = ['hannes@hanneshelgi.com','stebbiorri06@gmail.com'].join(',');
       const isEn = (typeof lang === 'string' ? lang : document.documentElement.lang) === 'en';
       const planNames = isEn
         ? { monthly: 'Monthly Subscription', annual: 'Annual Subscription', pro: 'Pro Subscription' }
