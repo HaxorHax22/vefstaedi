@@ -848,20 +848,24 @@ function initHeroImageRotation() {
   
   if (!heroPhone || !heroLaptop) return;
   
+  // Cache-bust hero images on localhost to avoid stale assets during development
+  const isDevHost = /localhost|127\.0\.0\.1/.test(location.hostname);
+  const bust = isDevHost ? `?v=${Date.now()}` : '';
+
   const imageSets = [
     {
-      phone: '/assets/img/hero/phone/new_s-s_phone.png',
-      laptop: '/assets/img/hero/laptop/laptop-s-s.png',
+      phone: `/assets/img/hero/phone/new_s-s_phone.png${bust}`,
+      laptop: `/assets/img/hero/laptop/laptop-s-s.png${bust}`,
       alt: 'SÞS verkefni'
     },
     {
-      phone: '/assets/img/hero/phone/new_KB_phone.png',
-      laptop: '/assets/img/hero/laptop/laptop-kb.png',
+      phone: `/assets/img/hero/phone/new_KB_phone.png${bust}`,
+      laptop: `/assets/img/hero/laptop/laptop-kb.png${bust}`,
       alt: 'Kjölur Byggingafélag verkefni'
     },
     {
-      phone: '/assets/img/hero/phone/TD_phone.app.png',
-      laptop: '/assets/img/hero/laptop/TD_mac.png',
+      phone: `/assets/img/hero/phone/TD_phone.app.png${bust}`,
+      laptop: `/assets/img/hero/laptop/TD_mac.png${bust}`,
       alt: 'Tómas Darri verkefni'
     }
   ];
@@ -890,6 +894,9 @@ function initHeroImageRotation() {
     }, 250);
   };
   
+  // Ensure initial set uses cache-busted URLs too
+  applySet(0);
+
   // Add smooth transitions
   heroPhone.style.transition = 'opacity 300ms ease';
   heroLaptop.style.transition = 'opacity 300ms ease';
