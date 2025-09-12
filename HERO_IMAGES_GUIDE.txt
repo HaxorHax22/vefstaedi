@@ -1,0 +1,47 @@
+HERO IMAGES – HOW TO ADD/REPLACE (Local + Production)
+
+The site serves hero images from /assets/... (public). For changes to appear in dev and prod, follow these steps:
+
+1) Place files in BOTH locations
+   - Phone images → src/assets/img/hero/phone/
+   - Laptop images → src/assets/img/hero/laptop/
+   - Then copy the same files to the public paths used by the site:
+     - Phone → src/public/assets/img/hero/phone/
+     - Laptop → src/public/assets/img/hero/laptop/
+   Reason: Vite serves /assets/* from src/public.
+
+2) Use the exact filenames referenced by the code
+   Current hero rotation expects these three sets:
+   - SÞS:   phone new_s-s_phone.png   | laptop laptop-s-s.png
+   - KB:    phone new_KB_phone.png    | laptop laptop-kb.png
+   - TD:    phone TD_phone.app.png    | laptop TD_mac.png
+
+3) If you change filenames, update the code in two places
+   - Initial images (first paint): src/index.html
+     <img id="hero-phone" src="/assets/img/hero/phone/<phone>.png" ... />
+     <img id="hero-laptop" src="/assets/img/hero/laptop/<laptop>.png" ... />
+   - Rotation images: src/scripts/script.js → function initHeroImageRotation()
+     Edit the imageSets array with the new phone/laptop filenames.
+
+4) Cache busting (if browser shows old images)
+   - Dev (localhost): cache-busting is automatic (timestamp query).
+   - Prod: there is a fallback query like ?v=2. Bump the number if you need to force refresh.
+   - Always hard refresh after swaps: Cmd+Shift+R.
+
+5) Add a new client set (optional)
+   - Add files to both assets locations.
+   - Append a new object to imageSets with phone/laptop/alt.
+   - Keep exactly 3 cycles if that’s the current requirement.
+
+6) Verify
+   - npm run dev (or Vite dev) and hard refresh.
+   - Check the first hero render and the rotation.
+
+7) Commit
+   - git add .
+   - git commit -m "hero: update images"
+   - git push
+
+Notes
+- All hero paths in HTML/JS start with /assets/... and must exist under src/public/assets/.
+- Alt text lives in imageSets.alt; keep it meaningful.
